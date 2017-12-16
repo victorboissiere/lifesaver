@@ -12,7 +12,6 @@ if len(argv) != 3:
     exit(1)
 
 (_, packageManager, installMode) = argv
-print(argv)
 
 COMMAND_SUBSTITUTIONS = {
     "[PKG]": packageManager,
@@ -32,7 +31,7 @@ print("{0} installation configuration".format(install_mode))
 print(install_mode["description"])
 
 for program in install_mode["programs"]:
-    subprocess.check_call("{0} install {1}".format(packageManager, program))
+    subprocess.check_call("{0} install {1}".format(packageManager, program), shell=True)
 
 for step in install_mode["steps"]:
     print(step["description"])
