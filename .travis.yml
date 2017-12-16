@@ -4,5 +4,9 @@ jobs:
   include:
   - stage: curl
     script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo sh -s minimal
+  -
     script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo sh -s shell
+  -
     script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo sh -s full
+  - stage: wget
+    script: wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh | sudo sh -s minimal
