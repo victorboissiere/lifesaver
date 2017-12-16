@@ -1,6 +1,0 @@
-language: python
-
-script:
-  - sudo sh ./install.sh minimal
-  - sudo sh ./install.sh shell
-  - sudo sh ./install.sh full
