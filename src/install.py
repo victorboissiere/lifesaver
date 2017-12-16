@@ -24,7 +24,7 @@ def get_shell_command(package_manager, shell_command):
     }
 
     for str_substitution, substitutionValue in command_substitutions.items():
-        shell_command.replace(str_substitution, substitutionValue)
+        shell_command = shell_command.replace(str_substitution, substitutionValue)
 
     return shell_command
 
