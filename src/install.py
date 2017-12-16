@@ -51,7 +51,6 @@ if __name__ == "__main__":
 
     (_, packageManager, install_mode) = argv
     settings = INSTALL_CONFIG[install_mode]
-    print(settings)
 
     if "dependencies" in settings:
         for dependency in INSTALL_CONFIG[install_mode]["dependencies"]:
