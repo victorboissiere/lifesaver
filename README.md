@@ -59,4 +59,4 @@ Example:
 }
 ```
 
-This will be the same as running `./install minimal && ./install shell`.
+This will be the same as running `./src/install.py minimal && ./src/install.py shell`.

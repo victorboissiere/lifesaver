@@ -31,7 +31,7 @@ cd /tmp && git clone https://github.com/victorboissiere/lifesaver
 echo "Executing as user ${USER}"
 chown -R ${USER}:${USER} /tmp/lifesaver
 
-cd /tmp/lifesaver && python3 ./src/install.py "${PACKAGE_MANAGER}" $1
+cd /tmp/lifesaver && python3 ./src/install.py "${PACKAGE_MANAGER}" $1 ${USER}
 
 rm -rf /tmp/lifesaver
 

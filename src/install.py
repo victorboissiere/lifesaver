@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from sys import argv
+import getpass
 import json
 import subprocess
 
@@ -17,10 +18,11 @@ def print_usage():
     exit(1)
 
 
-def get_shell_command(package_manager, shell_command):
+def get_shell_command(user, package_manager, shell_command):
     command_substitutions = {
         "[PKG]": package_manager,
-        "[CP]": "cp -a"
+        "[CP]": "cp -a",
+        "[CHOWN]": "chown -R {0}:{0}".format(user),
     }
 
     for str_substitution, substitutionValue in command_substitutions.items():
@@ -29,7 +31,7 @@ def get_shell_command(package_manager, shell_command):
     return shell_command
 
 
-def install(package_manager, mode, install_settings):
+def install(user, package_manager, mode, install_settings):
     print("{0} installation configuration...\n".format(mode.upper()))
     print(install_settings["description"])
 
@@ -43,20 +45,21 @@ def install(package_manager, mode, install_settings):
             print("[STEP] {0}".format(step["description"]))
 
             for command in step["commands"]:
-                subprocess.check_call(get_shell_command(package_manager, command), shell=True)
+                subprocess.check_call(get_shell_command(user, package_manager, command), shell=True)
 
 
 if __name__ == "__main__":
-    if len(argv) != 3 or argv[2] not in INSTALL_CONFIG:
+    if len(argv) < 3 or argv[2] not in INSTALL_CONFIG:
         print_usage()
 
     (_, packageManager, install_mode) = argv
+    user = getpass.getuser() if len(argv) == 3 else argv[3]
     settings = INSTALL_CONFIG[install_mode]
 
     if "dependencies" in settings:
         for dependency in INSTALL_CONFIG[install_mode]["dependencies"]:
-            install(packageManager, "[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
+            install(user, packageManager, "[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
 
-    install(packageManager, install_mode, INSTALL_CONFIG[install_mode])
+    install(user, packageManager, install_mode, INSTALL_CONFIG[install_mode])
 
 
