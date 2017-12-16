@@ -1,2 +1,4 @@
+language: python
+
 script:
-  - sh ./install.sh basic
+  - sudo sh ./install.sh basic
