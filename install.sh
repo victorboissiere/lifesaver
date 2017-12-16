@@ -20,5 +20,7 @@ do
     fi
 done
 
-python3 ./src/install.py "${PACKAGE_MANAGER}" $1
+rm -rf /tmp/lifesaver
+git clone https://github.com/victorboissiere/lifesaver /tmp
+cd /tmp/lifesaver && python3 ./src/install.py "${PACKAGE_MANAGER}" $1
 

@@ -9,13 +9,56 @@ by installing only the tools that you need.
 
 With curl
 ```bash
-echo basic | sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL)"
+echo minimal | sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL)"
 ```
 
 ```bash
-echo basic | sh -c "$(wget https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -O -)"
+echo minimal | sh -c "$(wget https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -O -)"
 ```
+
+The `basic` keyword is an installation mode. Check all installation modes
+in `config.json`.
 
 # Configuration
 
-All the needec 
+To customize available install mode and the pograms you want to install,
+simply modify the `config.json` file.
+
+## Config file example
+
+```json
+{
+ "minimal": {
+    "description": "Install basic shell configuration",
+    "programs": ["vim", "curl"],
+    "steps": [
+      {
+        "description": "Installing vim configuration",
+        "commands": [
+          "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+          "cp ./softwares/vim/.vimrc ~/.vimrc"
+        ]
+      }
+    ]
+  }
+}
+```
+
+`programs` and `steps` are optionals
+
+## Dependencies
+
+If you want to have an installation mode that inherit from another, you can
+use `dependencies`.
+
+Example:
+```json
+{
+ "full": {
+    "description": "Install full shell configuration",
+    "dependencies": ["minimal", "shell"]
+  }
+}
+```
+
+This will be the same as running `./install minimal && ./install shell`.
