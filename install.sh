@@ -15,7 +15,7 @@ fi
 
 for soft in python3 git
 do
-    if command -v ${soft} &>/dev/null; then
+    if ! command -v ${soft} &>/dev/null; then
         echo "Installing ${soft} required package"
         ${PACKAGE_MANAGER} install ${soft}
     fi
@@ -23,6 +23,7 @@ done
 
 rm -rf /tmp/lifesaver
 cd /tmp && git clone https://github.com/victorboissiere/lifesaver
-chown -R ${USER}:${USER} /tmp/lifesaver/softwares
+echo "Executing as user ${USER}"
+chown -R ${USER}:${USER} /tmp/lifesaver
 cd /tmp/lifesaver && python3 ./src/install.py "${PACKAGE_MANAGER}" $1
 
