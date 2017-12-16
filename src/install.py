@@ -55,18 +55,18 @@ if __name__ == "__main__":
     if len(argv) < 3 or argv[2] not in INSTALL_CONFIG:
         print_usage()
 
-    user = getpass.getuser()
+    userInstall = getpass.getuser()
     if len(argv) == 3:
         (_, packageManager, install_mode) = argv
     else:
-        (_, packageManager, install_mode, user) = argv
+        (_, packageManager, install_mode, userInstall) = argv
 
     settings = INSTALL_CONFIG[install_mode]
 
     if "dependencies" in settings:
         for dependency in INSTALL_CONFIG[install_mode]["dependencies"]:
-            install(user, packageManager, "[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
+            install(userInstall, packageManager, "[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
 
-    install(user, packageManager, install_mode, INSTALL_CONFIG[install_mode])
+    install(userInstall, packageManager, install_mode, INSTALL_CONFIG[install_mode])
 
 
