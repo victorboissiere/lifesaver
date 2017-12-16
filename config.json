@@ -6,8 +6,8 @@
       {
         "description": "Installing vim configuration",
         "commands": [
-          "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
-          "[CP] ./softwares/vim/.vimrc ~/.vimrc"
+          "[CP] ./softwares/vim/.vimrc ~/.vimrc",
+          "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
         ]
       }
     ]
