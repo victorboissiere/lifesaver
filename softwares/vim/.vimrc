@@ -54,7 +54,7 @@ syntax enable
 set t_Co=256
 
 " Theme
-colorscheme onedark
+silent! colorscheme onedark
 
 " Highlight trailing white space end of line
 :highlight ExtraWhiteSpace ctermbg=red guibg=red
