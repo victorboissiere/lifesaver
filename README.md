@@ -9,10 +9,13 @@ by installing only the tools that you need.
 
 With curl
 ```bash
-sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL )"
-```
-With wget
-```bash
-sh -c "$(wget https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -O -)"
+echo basic | sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL)"
 ```
 
+```bash
+echo basic | sh -c "$(wget https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -O -)"
+```
+
+# Configuration
+
+All the needec 

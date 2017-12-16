@@ -37,11 +37,12 @@ def install(package_manager, mode, install_settings):
         print("[PROGRAMS] installing {0}...".format(packages))
         subprocess.check_call("{0} install {1}".format(packageManager, packages), shell=True)
 
-    for step in install_settings["steps"]:
-        print("[STEP] {0}".format(step["description"]))
+    if "steps" in install_settings:
+        for step in install_settings["steps"]:
+            print("[STEP] {0}".format(step["description"]))
 
-        for command in step["commands"]:
-            subprocess.check_call(get_shell_command(package_manager, command), shell=True)
+            for command in step["commands"]:
+                subprocess.check_call(get_shell_command(package_manager, command), shell=True)
 
 
 if __name__ == "__main__":
