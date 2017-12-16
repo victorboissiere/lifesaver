@@ -1,13 +1,18 @@
 # LifeSaver
 
-LifeSafer is a tool to get started on any shell environment (new vps, docker, etc.) without typing all
-of the same commands all over again.
+LifeSafer is a tool to get started on any shell environment (vps, docker, etc.)
+by installing only the tools that you need. 
 
 **Work in progress...**
 
-# Ge started
+# Getting started
 
-Simply run the following command:
+With curl
+```bash
+sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL )"
+```
+With wget
+```bash
+sh -c "$(wget https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -O -)"
+```
 
-
-Work in progress...

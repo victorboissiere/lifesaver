@@ -20,7 +20,7 @@
       {
         "description": "Installing zsh custom configuration",
         "commands": [
-          "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"",
+          "exit | sh -c \"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"",
           "cp ./softwares/zsh/.zshrc ~/"
         ]
       }
