@@ -12,6 +12,7 @@ if len(argv) != 3:
     exit(1)
 
 (_, packageManager, installMode) = argv
+print(argv)
 
 COMMAND_SUBSTITUTIONS = {
     "[PKG]": packageManager,
@@ -27,6 +28,7 @@ def get_shell_command(cmd):
 
 
 install_mode = INSTALL_CONFIG[installMode]
+print("{0} installation configuration".format(install_mode))
 print(install_mode["description"])
 
 for program in install_mode["programs"]:

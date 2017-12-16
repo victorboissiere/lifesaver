@@ -14,10 +14,11 @@ fi
 
 for soft in python3 git
 do
-    ${PACKAGE_MANAGER} install ${soft}
+    if command -v ${soft} &>/dev/null; then
+        echo "Installing ${soft} required package"
+        ${PACKAGE_MANAGER} install ${soft}
+    fi
 done
 
-if command -v python3 &>/dev/null; then
-    python3 ./install.py ${PACKAGE_MANAGER} $1
-fi
+python3 ./install.py "${PACKAGE_MANAGER}" $1
 
