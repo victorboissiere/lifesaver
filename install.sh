@@ -15,7 +15,7 @@ fi
 
 for soft in python3 git
 do
-    if ! ${soft} -v &>/dev/null; then
+    if ! which ${soft} &>/dev/null; then
         echo "Installing ${soft} required package"
         ${PACKAGE_MANAGER} install ${soft}
     fi
