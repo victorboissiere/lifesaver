@@ -5,7 +5,8 @@ set -e
 if [ -f /etc/alpine-release ]; then
     PACKAGE_MANAGER='apk'
 elif [ -f /etc/debian_version ]; then
-    PACKAGE_MANAGER='apt-get'
+    apt-get update
+    PACKAGE_MANAGER='apt-get -y'
 else
     echo Could not detect OS
     exit 1
@@ -13,7 +14,7 @@ fi
 
 for soft in python3 git
 do
-    PACKAGE_MANAGER install ${soft}
+    ${PACKAGE_MANAGER} install ${soft}
 done
 
 if command -v python3 &>/dev/null; then
