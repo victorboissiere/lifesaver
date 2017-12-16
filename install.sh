@@ -21,6 +21,11 @@ do
     fi
 done
 
+USER = ${USER}
+if ! [ -z "$2" ]; then
+    USER = $2
+fi
+
 rm -rf /tmp/lifesaver
 cd /tmp && git clone https://github.com/victorboissiere/lifesaver
 echo "Executing as user ${USER}"
