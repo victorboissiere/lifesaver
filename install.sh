@@ -15,10 +15,7 @@ fi
 
 for soft in python3 git
 do
-    if ! which ${soft} &>/dev/null; then
-        echo "Installing ${soft} required package"
-        ${PACKAGE_MANAGER} install ${soft}
-    fi
+    which ${soft} >/dev/null && continue || ${PACKAGE_MANAGER} install ${soft}
 done
 
 USER=${USER}
