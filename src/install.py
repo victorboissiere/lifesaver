@@ -45,6 +45,7 @@ def install(user, package_manager, mode, install_settings):
             print("[STEP] {0}".format(step["description"]))
 
             for command in step["commands"]:
+                print("Running {0}".format(get_shell_command(user, package_manager, command)))
                 subprocess.check_call(get_shell_command(user, package_manager, command), shell=True)
 
 
