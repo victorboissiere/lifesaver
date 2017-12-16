@@ -20,5 +20,5 @@ do
     fi
 done
 
-python3 ./install.py "${PACKAGE_MANAGER}" $1
+python3 ./src/install.py "${PACKAGE_MANAGER}" $1
 

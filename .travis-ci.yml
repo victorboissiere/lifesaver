@@ -2,3 +2,4 @@ language: python
 
 script:
   - sudo sh ./install.sh basic
+  - sudo sh ./install.sh full
