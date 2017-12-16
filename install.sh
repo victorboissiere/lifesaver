@@ -15,20 +15,23 @@ fi
 
 for soft in python3 git
 do
-    if ! command -v ${soft} &>/dev/null; then
+    if ! ${soft} -v &>/dev/null; then
         echo "Installing ${soft} required package"
         ${PACKAGE_MANAGER} install ${soft}
     fi
 done
 
-USER = ${USER}
+USER=${USER}
 if ! [ -z "$2" ]; then
-    USER = $2
+    USER=$2
 fi
 
 rm -rf /tmp/lifesaver
 cd /tmp && git clone https://github.com/victorboissiere/lifesaver
 echo "Executing as user ${USER}"
 chown -R ${USER}:${USER} /tmp/lifesaver
+
 cd /tmp/lifesaver && python3 ./src/install.py "${PACKAGE_MANAGER}" $1
+
+rm -rf /tmp/lifesaver
 
