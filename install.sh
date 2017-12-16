@@ -4,8 +4,8 @@ set -e
 
 if [ -f /etc/alpine-release ]; then
     PACKAGE_MANAGER='apk'
-if [ -f /etc/alpine-release ]; then
-    PACKAGE_MANAGER='apk'
+elif [ -f /etc/debian_version ]; then
+    PACKAGE_MANAGER='apt-get'
 else
     echo Could not detect OS
     exit 1
