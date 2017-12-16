@@ -20,6 +20,7 @@ def print_usage():
 def get_shell_command(package_manager, shell_command):
     command_substitutions = {
         "[PKG]": package_manager,
+        "[CP]": "cp -a"
     }
 
     for str_substitution, substitutionValue in command_substitutions.items():
