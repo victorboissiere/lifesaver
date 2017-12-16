@@ -28,18 +28,20 @@ def get_shell_command(package_manager, shell_command):
     return shell_command
 
 
-def install(mode, install_settings):
+def install(package_manager, mode, install_settings):
     print("{0} installation configuration...\n".format(mode.upper()))
     print(install_settings["description"])
 
-    for program in install_settings["programs"]:
-        subprocess.check_call("{0} install {1}".format(packageManager, program), shell=True)
+    if "programs" in install_settings and len(install_settings["programs"]) > 0:
+        packages = " ".join(install_settings["programs"])
+        print("[PROGRAMS] installing {0}...".format(packages))
+        subprocess.check_call("{0} install {1}".format(packageManager, packages), shell=True)
 
-    for step in install_mode["steps"]:
-        print(step["description"])
+    for step in install_mode["steps"].items():
+        print("[STEP] {0}".format(step["description"]))
 
         for command in step["commands"]:
-            subprocess.check_call(get_shell_command(command), shell=True)
+            subprocess.check_call(get_shell_command(package_manager, command), shell=True)
 
 
 if __name__ == "__main__":
@@ -53,6 +55,6 @@ if __name__ == "__main__":
         for dependency in INSTALL_CONFIG[install_mode]["dependencies"]:
             install("[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
 
-    install(install_mode, INSTALL_CONFIG[install_mode])
+    install(packageManager, install_mode, INSTALL_CONFIG[install_mode])
 
 

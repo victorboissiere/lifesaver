@@ -1,5 +1,5 @@
 {
-  "basic": {
+  "minimal": {
     "description": "Install basic shell configuration",
     "programs": ["vim", "curl"],
     "steps": [
@@ -12,8 +12,12 @@
       }
     ]
   },
+  "shell": {
+    "description": "ZSH full shell configuration",
+    "programs": ["zsh"]
+  },
   "full": {
     "description": "Install full shell configuration",
-    "dependencies": ["basic"]
+    "dependencies": ["minimal", "shell"]
   }
 }
