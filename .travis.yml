@@ -3,10 +3,10 @@ language: python
 jobs:
   include:
   - stage: curl
-    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo sh -s minimal
+    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo bash -s minimal
   -
-    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo sh -s shell
+    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo bash -s shell
   -
-    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo sh -s full
+    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo bash -s full
   - stage: wget
-    script: wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh | sudo sh -s minimal
+    script: wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh | sudo bash -s minimal
