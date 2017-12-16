@@ -21,6 +21,6 @@ do
 done
 
 rm -rf /tmp/lifesaver
-git clone https://github.com/victorboissiere/lifesaver /tmp
+cd /tmp && git clone https://github.com/victorboissiere/lifesaver
 cd /tmp/lifesaver && python3 ./src/install.py "${PACKAGE_MANAGER}" $1
 
