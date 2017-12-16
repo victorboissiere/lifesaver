@@ -1,6 +1,4 @@
 language: python
 
 script:
-  - echo minimal | sudo sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL)"
-  - echo shell | sudo sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL)"
-  - echo full | sudo sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL)"
+  - curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sh -s minimal

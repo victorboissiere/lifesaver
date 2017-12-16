@@ -9,11 +9,11 @@ by installing only the tools that you need.
 
 With curl
 ```bash
-echo minimal | sh -c "$(curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL)"
+curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sh -s minimal
 ```
 
 ```bash
-echo minimal | sh -c "$(wget https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -O -)"
+wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh | sh -s minimal
 ```
 
 The `basic` keyword is an installation mode. Check all installation modes

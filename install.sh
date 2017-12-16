@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 set -e
+echo $1
 
 if [ -f /etc/alpine-release ]; then
     PACKAGE_MANAGER='apk'
