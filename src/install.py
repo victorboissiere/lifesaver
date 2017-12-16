@@ -37,7 +37,7 @@ def install(package_manager, mode, install_settings):
         print("[PROGRAMS] installing {0}...".format(packages))
         subprocess.check_call("{0} install {1}".format(packageManager, packages), shell=True)
 
-    for step in install_mode["steps"].items():
+    for step in install_settings["steps"]:
         print("[STEP] {0}".format(step["description"]))
 
         for command in step["commands"]:
@@ -50,10 +50,11 @@ if __name__ == "__main__":
 
     (_, packageManager, install_mode) = argv
     settings = INSTALL_CONFIG[install_mode]
+    print(settings)
 
     if "dependencies" in settings:
         for dependency in INSTALL_CONFIG[install_mode]["dependencies"]:
-            install("[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
+            install(packageManager, "[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
 
     install(packageManager, install_mode, INSTALL_CONFIG[install_mode])
 
