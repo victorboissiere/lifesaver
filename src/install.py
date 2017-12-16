@@ -52,8 +52,12 @@ if __name__ == "__main__":
     if len(argv) < 3 or argv[2] not in INSTALL_CONFIG:
         print_usage()
 
-    (_, packageManager, install_mode) = argv
-    user = getpass.getuser() if len(argv) == 3 else argv[3]
+    user = getpass.getuser()
+    if len(argv) == 3:
+        (_, packageManager, install_mode) = argv
+    else:
+        (_, packageManager, install_mode, user) = argv
+
     settings = INSTALL_CONFIG[install_mode]
 
     if "dependencies" in settings:
