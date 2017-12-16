@@ -46,6 +46,7 @@ def install(user, package_manager, mode, install_settings):
 
             for command in step["commands"]:
                 if isinstance(command, list):
+                    print("calling here")
                     subprocess.check_call(command)
                 else:
                     subprocess.check_call(get_shell_command(user, package_manager, command), shell=True)
