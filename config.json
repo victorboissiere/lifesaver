@@ -28,6 +28,20 @@
       }
     ]
   },
+  "docker": {
+    "description": "Install docker and docker-compose",
+    "programs": ["apt-transport-https", "apt-transport-https", "curl", "software-properties-common"],
+    "steps": [
+      {
+        "description": "Docker configuration",
+        "commands": [
+          "curl -fsSL get.docker.com -o get-docker.sh",
+          "sh get-docker.sh",
+          "usermod -aG docker [USER]"
+        ]
+      }
+    ]
+  },
   "full": {
     "description": "Install full shell configuration",
     "dependencies": ["minimal", "shell"]
