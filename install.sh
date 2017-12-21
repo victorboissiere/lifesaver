@@ -4,7 +4,7 @@ set -e
 echo $1
 
 if [ -f /etc/alpine-release ]; then
-    apk --update
+    apk update
     PACKAGE_MANAGER='apk add'
 elif [ -f /etc/debian_version ]; then
     apt-get update
