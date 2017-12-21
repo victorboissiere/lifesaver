@@ -4,7 +4,8 @@ set -e
 echo $1
 
 if [ -f /etc/alpine-release ]; then
-    PACKAGE_MANAGER='apk'
+    apk --update
+    PACKAGE_MANAGER='apk add'
 elif [ -f /etc/debian_version ]; then
     apt-get update
     PACKAGE_MANAGER='apt-get -y'
@@ -15,7 +16,7 @@ fi
 
 for soft in python3 git
 do
-    which ${soft} >/dev/null && continue || ${PACKAGE_MANAGER} install ${soft}
+    which ${soft} >/dev/null && continue || ${PACKAGE_MANAGER} ${soft}
 done
 
 USER=${USER}
