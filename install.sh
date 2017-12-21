@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
 echo $1
@@ -8,7 +8,7 @@ if [ -f /etc/alpine-release ]; then
     PACKAGE_MANAGER='apk add'
 elif [ -f /etc/debian_version ]; then
     apt-get update
-    PACKAGE_MANAGER='apt-get -y'
+    PACKAGE_MANAGER='apt-get -y install'
 else
     echo Could not detect OS
     exit 1
