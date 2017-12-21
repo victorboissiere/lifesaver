@@ -39,7 +39,7 @@ def install(user, package_manager, mode, install_settings):
     if "programs" in install_settings and len(install_settings["programs"]) > 0:
         packages = " ".join(install_settings["programs"])
         print("[PROGRAMS] installing {0}...".format(packages))
-        subprocess.check_call("{0} {1}".format(packageManager, packages), shell=True)
+        subprocess.check_call("{0} {1}".format(package_manager, packages), shell=True)
 
     if "steps" in install_settings:
         for step in install_settings["steps"]:
