@@ -33,6 +33,7 @@ export LANG=en_US.UTF-8
 
 alias dc='docker-compose'
 alias dr='docker'
+alias dprod='docker-compose -f docker-compose.prod.yml -f docker-compose.yml'
 alias ddeploy='docker-compose up -d --no-deps --build'
 alias drmc='docker rm `docker ps -q -f status=exited`'
 alias drmi='docker rmi $(docker images -f "dangling=true" -q)'
