@@ -22,6 +22,11 @@ export EDITOR="vim"
 alias python='python3'
 alias pip='pip3'
 
+function mkcd()
+{
+  mkdir $1 && cd $1
+}
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -37,6 +42,11 @@ alias dprod='docker-compose -f docker-compose.prod.yml -f docker-compose.yml'
 alias ddeploy='docker-compose up -d --no-deps --build'
 alias drmc='docker rm `docker ps -q -f status=exited`'
 alias drmi='docker rmi $(docker images -f "dangling=true" -q)'
+
+alias ad='ansible-doc'
+alias ap='ansible-playbook'
+alias an='ansible'
+alias vg='vagrant'
 
 #-- LARAVEL --#
 ###############
