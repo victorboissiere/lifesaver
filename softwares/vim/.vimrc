@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+Plug 'pearofducks/ansible-vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-vinegar'
@@ -158,6 +159,7 @@ nmap z; <C-W><C-L>
 let g:ctrlp_custom_ignore = 'node_modules/DS_Store\|git\|vendor'
 
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
+let g:ctrlp_tabpage_position = 'ac'
 
 "/
 "/ NerdTree
@@ -175,4 +177,9 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_banner       = 0
 let g:netrw_liststyle    = 3
 let g:netrw_sort_options = 'i'
+
+augroup vagrant
+	au!
+	au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
 
