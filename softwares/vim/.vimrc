@@ -46,6 +46,10 @@ set number
 " Smart numbers
 set relativenumber
 
+" Load shell aliases and settings
+set shell=zsh
+" set shellcmdflag=-ic
+
 "-- VISUAL --"
 """"""""""""""
 
@@ -112,6 +116,9 @@ nmap <Leader>r :CtrlPMRUFiles<cr>
 "Close vinegar
 nmap <Leader>k :bd<cr>
 
+" Quickly execute shell command
+nmap <Leader>s :! 
+
 " Edit snippets
 nmap <Leader>es :e ~/.vim/snippets/
 
@@ -121,6 +128,20 @@ nmap <Leader>m :!pandoc %:p -o /tmp/document.pdf -s -N && zathura /tmp/document.
 " Sudo permission fix
 cmap w!! w !sudo tee > /dev/null %
 cmap x!! x !sudo tee > /dev/null %
+
+" Save & quit actions
+nmap <C-W> :w<cr>
+imap <C-W> <Esc>:w<cr>
+nmap <C-X> :x<cr>
+imap <C-X> <Esc>:x<cr>
+nmap <C-C> :q<cr>
+imap <C-C> <Esc>:q<cr>
+
+" VimGrep
+nmap [q :cprev<cr>
+nmap [q :cnext<cr>
+nmap [Q :cfirst<cr>
+nmap [Q :clast<cr>
 
 
 "-- AUTO COMMANDS --"
@@ -143,11 +164,31 @@ set splitbelow
 set splitright
 
 " Split management with jkl;
-nmap zj <C-W><C-H>
-nmap zk <C-W><C-J>
-nmap zl <C-W><C-K>
-nmap z; <C-W><C-L>
+nnoremap aj <C-W><C-H>
+nnoremap ak <C-W><C-J>
+nnoremap al <C-W><C-K>
+nnoremap a; <C-W><C-L>
 
+" Rotate / Inverse two window
+nnoremap ar <C-W>r
+nnoremap aR <C-W>R
+" Switch the window into a new tab
+nnoremap aT <C-W>T
+" Switch the window into a new tab
+nnoremap a<Enter> <C-W><Enter>
+" Close all but this One
+nnoremap ao <C-W>o
+" Take all the height
+nnoremap a_ <C-W>_
+" Take all the width
+nnoremap a\| <C-W>\|
+" Equal width/height
+nnoremap a= <C-W>=
+
+" Switch tabs
+
+nmap <tab> gt
+nmap <s-tab> gT
 
 "-- PLUGINS --"
 """""""""""""""
@@ -160,6 +201,9 @@ let g:ctrlp_custom_ignore = 'node_modules/DS_Store\|git\|vendor'
 
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
 let g:ctrlp_tabpage_position = 'ac'
+let g:ctrlp_working_path_mode = 0
+" Prevent file from being opened in nerd tree
+let g:ctrlp_cmd = ':NERDTreeClose\|CtrlP'
 
 "/
 "/ NerdTree
@@ -167,6 +211,8 @@ let g:ctrlp_tabpage_position = 'ac'
 
 " Prevent NerdTree from overriding - vinegar shortcut
 let NERDTreeHijackNetrw = 0
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore = ['\.swp$', '\~$', '.git$[[dir]]']
 
 "/
 "/ Vinegar

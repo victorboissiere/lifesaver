@@ -154,6 +154,12 @@ function man()
   fi
 }
 
+# Help to be able to use alias in vim
+function zshalias()
+{
+  grep "^alias" ~/.zshrc > ~/.zshenv
+}
+
 #-- FUN --#
 ###########
 
