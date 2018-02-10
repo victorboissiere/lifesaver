@@ -23,7 +23,8 @@
         "description": "Installing zsh custom configuration",
         "commands": [
           "exit | sh -c \"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"",
-          "[CP] ./softwares/zsh/.zshrc ~/"
+          "[CP] ./softwares/zsh/.zshrc ~/",
+          "grep \"^alias\" ~/.zshrc > ~/.zshenv"
         ]
       }
     ]
