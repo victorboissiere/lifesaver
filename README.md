@@ -1,7 +1,7 @@
 # LifeSaver
 
 LifeSafer is a tool to get started on any shell environment (vps, docker, etc.)
-by installing only the tools that you need. 
+by installing only the tools that you need.
 
 # Getting started
 
