@@ -18,6 +18,8 @@ do
     which ${soft} >/dev/null && continue || ${PACKAGE_MANAGER} ${soft}
 done
 
+pip3 install --upgrade pip
+
 USER=${USER}
 if ! [ -z "$2" ]; then
     USER=$2
