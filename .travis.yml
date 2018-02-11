@@ -3,14 +3,14 @@ language: python
 jobs:
   include:
   - stage: curl
-    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo bash -s minimal
+    script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s minimal
   -
-    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo bash -s shell
+    script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s shell
   -
-    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo bash -s docker
+    script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s docker
   -
-    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo bash -s ansible
+    script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s ansible
   -
-    script: curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | sudo bash -s full
+    script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s full
   - stage: wget
-    script: wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh | sudo bash -s minimal
+    script: wget -O - https://ls.gitcommit.fr | sudo bash -s minimal

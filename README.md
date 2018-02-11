@@ -9,12 +9,14 @@ by installing only the tools that you need.
 
 With curl
 ```bash
-curl https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh -fsSL | bash -s minimal $USER
+curl https://ls.gitcommit.fr -fsSL | bash -s minimal $USER
 ```
 
 ```bash
-wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh | bash -s minimal $USER
+wget -O - https://ls.gitcommit.fr | bash -s minimal $USER
 ```
+
+If you do not trust the `https://ls.gitcommit.fr`, it is just a simple redirection to `https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh`.
 
 The `basic` keyword is an installation mode. Check all installation modes
 in `config.yaml`.
