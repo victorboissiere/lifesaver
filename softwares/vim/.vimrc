@@ -15,6 +15,7 @@ Plug 'posva/vim-vue'
 Plug 'ronichoudhury/pep8.vim' " pip install pep8
 Plug 'davidhalter/jedi-vim' " pip install jedi
 Plug 'vim-scripts/bash-support.vim'
+Plug 'chr4/nginx.vim'
 call plug#end()
 
 "-- MISC --"
