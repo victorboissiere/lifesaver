@@ -18,7 +18,7 @@ do
     which ${soft} >/dev/null && continue || ${PACKAGE_MANAGER} ${soft}
 done
 
-pip3 install yaml
+pip3 install pyyaml
 
 USER=${USER}
 if ! [ -z "$2" ]; then
