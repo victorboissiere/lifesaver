@@ -44,6 +44,8 @@ minimal:
 
 `programs` and `steps` are optionals
 
+You can safely assume that `pip3` and `python3` is available on the host.
+
 ## Dependencies
 
 If you want to have an installation mode that inherit from another, you can
