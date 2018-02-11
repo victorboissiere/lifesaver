@@ -13,10 +13,12 @@ else
     exit 1
 fi
 
-for soft in python3 git
+for soft in python3 git python3-pip
 do
     which ${soft} >/dev/null && continue || ${PACKAGE_MANAGER} ${soft}
 done
+
+pip3 install yaml
 
 USER=${USER}
 if ! [ -z "$2" ]; then
