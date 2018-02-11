@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from sys import argv
-from yaml import load
+import yaml
 import getpass
 import subprocess
 
