@@ -18,7 +18,7 @@ wget -O - https://ls.gitcommit.fr | bash -s minimal $USER
 
 If you do not trust the `https://ls.gitcommit.fr`, it is just a simple redirection to `https://raw.githubusercontent.com/victorboissiere/lifesaver/master/install.sh`.
 
-The `basic` keyword is an installation mode. Check all installation modes
+The `minimal` keyword is an installation mode. Check all installation modes
 in `config.yaml`.
 
 # Configuration
