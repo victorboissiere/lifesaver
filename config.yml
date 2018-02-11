@@ -13,18 +13,25 @@ minimal:
         - CHOWN ~/.vim
         - grep "^alias" ./softwares/zsh/.zshrc > ~/.zshenv
         - pip3 install pep8 jedi
+
 shell:
     description: ZSH full shell configuration with oh my zsh
     dependencies:
       - minimal
     programs:
       - zsh
+      - ranger
     steps:
       - description: Installing zsh custom configuration
         commands:
           - exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
           - CP ./softwares/zsh/.zshrc ~/
           - grep "^alias" ~/.zshrc > ~/.zshenv
+      - description: Apply custom ranger configuration
+        commands:
+          - mkdir -p .config/ranger
+          - CP ./softwares/zsh/rc.conf ~/.config/ranger/rc.conf
+
 docker:
   description: Install docker and docker-compose
   programs:

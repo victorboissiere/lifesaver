@@ -4,6 +4,7 @@ set -e
 
 cp ~/.vimrc ./softwares/vim/
 cp ~/.zshrc ./softwares/zsh
+cp ~/.config/ranger/rc.conf ./softwares/ranger
 
 if [  -n "$(git status --porcelain)" ]; then
   echo "Done!"
