@@ -1,5 +1,7 @@
 # LifeSaver
 
+[![Build Status](https://travis-ci.org/victorboissiere/lifesaver.svg?branch=master)](https://travis-ci.org/victorboissiere/lifesaver)
+
 LifeSafer is a tool to get started on any shell environment (vps, docker, etc.)
 by installing only the tools that you need.
 
