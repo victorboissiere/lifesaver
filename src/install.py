@@ -51,6 +51,13 @@ def install(user, package_manager, mode, install_settings):
                 else:
                     subprocess.check_call(get_shell_command(user, package_manager, command), shell=True)
 
+def get_after_help(dependency):
+    install_config_dep = INSTALL_CONFIG[dependency]
+    if "after_help" in install_config_dep:
+        return "\n{0}: {1}".format(dependency, install_config_dep["after_help"])
+
+    return ""
+
 
 if __name__ == "__main__":
     if len(argv) < 3 or argv[2] not in INSTALL_CONFIG:
@@ -63,9 +70,15 @@ if __name__ == "__main__":
         (_, packageManager, install_mode, userInstall) = argv
 
     settings = INSTALL_CONFIG[install_mode]
+    after_help = "=========\n\n"
 
     if "dependencies" in settings:
         for dependency in INSTALL_CONFIG[install_mode]["dependencies"]:
             install(userInstall, packageManager, "[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
+            after_help += get_after_help(dependency)
+
 
     install(userInstall, packageManager, install_mode, INSTALL_CONFIG[install_mode])
+    after_help = get_after_help(install_mode)
+
+    print(after_help)
