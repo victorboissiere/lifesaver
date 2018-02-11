@@ -5,7 +5,7 @@ from yaml import load
 import getpass
 import subprocess
 
-with open('config.yaml') as data_file:
+with open('config.yml') as data_file:
     INSTALL_CONFIG = yaml.load(data_file)
 
 
@@ -69,5 +69,3 @@ if __name__ == "__main__":
             install(userInstall, packageManager, "[DEP] {0}".format(dependency), INSTALL_CONFIG[dependency])
 
     install(userInstall, packageManager, install_mode, INSTALL_CONFIG[install_mode])
-
-
