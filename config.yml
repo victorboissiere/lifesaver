@@ -29,7 +29,7 @@ shell:
           - grep "^alias" ~/.zshrc > ~/.zshenv
       - description: Apply custom ranger configuration
         commands:
-          - mkdir -p .config/ranger
+          - mkdir -p ~/.config/ranger
           - CP ./softwares/ranger/rc.conf ~/.config/ranger/rc.conf
 
 docker:
