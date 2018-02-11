@@ -12,6 +12,9 @@ Plug 'joshdick/onedark.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-fugitive'
 Plug 'posva/vim-vue'
+Plug 'ronichoudhury/pep8.vim' " pip install pep8
+Plug 'davidhalter/jedi-vim' " pip install jedi
+Plug 'vim-scripts/bash-support.vim'
 call plug#end()
 
 "-- MISC --"
@@ -100,6 +103,9 @@ nmap <Leader>ev :tabedit $MYVIMRC<cr>
 
 " Remove search higlight
 nmap <Leader><space> :nohlsearch<cr>
+
+" Remove quickfix
+nmap <Leader>q :ccl<cr>
 
 " Toggle left tree
 nmap <Leader>/ :NERDTreeToggle<cr>
@@ -223,6 +229,15 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_banner       = 0
 let g:netrw_liststyle    = 3
 let g:netrw_sort_options = 'i'
+
+"/
+"/ Bash
+"/
+
+" Configure bash comments
+let g:BASH_AuthorName   = 'VICTOR BOISSIERE'
+let g:BASH_Email        = 'victor.boissiere@gmail.com'
+let g:BASH_Company      = 'GitCommit'
 
 augroup vagrant
 	au!
