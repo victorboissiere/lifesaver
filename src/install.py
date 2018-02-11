@@ -5,7 +5,7 @@ from yaml import load
 import getpass
 import subprocess
 
-with open('config.json') as data_file:
+with open('config.yaml') as data_file:
     INSTALL_CONFIG = yaml.load(data_file)
 
 

@@ -3,7 +3,7 @@
   programs:
     - vim
     - curl
-    - zsh
+    - zsh # For vim alias auto completion
   steps:
     - description: Installing vim configuration
       commands:
