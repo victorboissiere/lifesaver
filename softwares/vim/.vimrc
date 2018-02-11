@@ -131,6 +131,9 @@ nmap <Leader>es :e ~/.vim/snippets/
 " Create pdf Markdown
 nmap <Leader>m :!pandoc %:p -o /tmp/document.pdf -s -N && zathura /tmp/document.pdf  > /dev/null 2>&1 &<cr>
 
+" Open TODO.md
+nmap <Leader>et :tabe ~/TODO.md<cr>
+
 " Sudo permission fix
 cmap w!! w !sudo tee > /dev/null %
 cmap x!! x !sudo tee > /dev/null %
