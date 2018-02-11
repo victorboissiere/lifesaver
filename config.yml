@@ -30,7 +30,7 @@ shell:
       - description: Apply custom ranger configuration
         commands:
           - mkdir -p .config/ranger
-          - CP ./softwares/zsh/rc.conf ~/.config/ranger/rc.conf
+          - CP ./softwares/ranger/rc.conf ~/.config/ranger/rc.conf
 
 docker:
   description: Install docker and docker-compose
