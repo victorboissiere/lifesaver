@@ -12,6 +12,7 @@
         - ["vim", "+silent", "+PlugInstall", "+qall"]
         - [CHOWN] ~/.vim
         - grep "^alias" ./softwares/zsh/.zshrc > ~/.zshenv
+        - pip3 install pep8
 - shell:
     description: ZSH full shell configuration with oh my zsh
     dependencies:
