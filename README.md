@@ -15,31 +15,29 @@ wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/ins
 ```
 
 The `basic` keyword is an installation mode. Check all installation modes
-in `config.json`.
+in `config.yaml`.
 
 # Configuration
 
 To customize available install mode and the pograms you want to install,
-simply modify the `config.json` file.
+simply modify the `config.yaml` file.
 
 ## Config file example
 
-```json
-{
- "minimal": {
-    "description": "Install basic shell configuration",
-    "programs": ["vim", "curl"],
-    "steps": [
-      {
-        "description": "Installing vim configuration",
-        "commands": [
-          "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
-          "cp ./softwares/vim/.vimrc ~/.vimrc"
-        ]
-      }
-    ]
-  }
-}
+```yaml
+- minimal:
+  description: Install basic shell configuration
+  programs:
+    - vim
+    - curl
+    - zsh
+  steps:
+    - description: Installing vim configuration
+      commands:
+        - [CP] ./softwares/vim/.vimrc ~/.vimrc
+        - curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        - ["vim", "+silent", "+PlugInstall", "+qall"]
+        - [CHOWN] ~/.vim
 ```
 
 `programs` and `steps` are optionals
@@ -50,13 +48,13 @@ If you want to have an installation mode that inherit from another, you can
 use `dependencies`.
 
 Example:
-```json
-{
- "full": {
-    "description": "Install full shell configuration",
-    "dependencies": ["minimal", "shell"]
-  }
-}
+
+```yaml
+- full:
+  description: Install full shell configuration
+  dependencies:
+    - miniaml
+    - shell
 ```
 
 This will be the same as running `./src/install.py minimal && ./src/install.py shell`.
