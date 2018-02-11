@@ -65,11 +65,11 @@ full:
 
 This will be the same as running `./src/install.py minimal && ./src/install.py shell`.
 
-# Special varibles substitutions
+# Special variables substitutions
 
 - CP: `cp -a`
 - PKG: detected package manager
 - CHOWN: `chown -R $USER:$USER`
 - USER: `$USER`
 
-Where $USER can be overriden as the parameter given in second argument (bash -s minimal my_custom_user)
+Where `$USER` can be overriden as the parameter given in second argument (bash -s minimal my_custom_user)
