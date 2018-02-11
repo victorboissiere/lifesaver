@@ -149,9 +149,9 @@ imap <C-C> <Esc>:q<cr>
 
 " VimGrep
 nmap [q :cprev<cr>
-nmap [q :cnext<cr>
+nmap ]q :cnext<cr>
 nmap [Q :cfirst<cr>
-nmap [Q :clast<cr>
+nmap ]Q :clast<cr>
 
 
 "-- AUTO COMMANDS --"

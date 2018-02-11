@@ -59,7 +59,7 @@ Example:
 full:
   description: Install full shell configuration
   dependencies:
-    - miniaml
+    - minimal
     - shell
 ```
 
