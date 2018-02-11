@@ -13,12 +13,10 @@ else
     exit 1
 fi
 
-for soft in python3 git python3-pip
+for soft in python3 git python3-pip python3-yaml
 do
     which ${soft} >/dev/null && continue || ${PACKAGE_MANAGER} ${soft}
 done
-
-pip3 install pyyaml
 
 USER=${USER}
 if ! [ -z "$2" ]; then
