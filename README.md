@@ -27,7 +27,7 @@ simply modify the `config.yaml` file.
 ## Config file example
 
 ```yaml
-- minimal:
+minimal:
   description: Install basic shell configuration
   programs:
     - vim
@@ -52,7 +52,7 @@ use `dependencies`.
 Example:
 
 ```yaml
-- full:
+full:
   description: Install full shell configuration
   dependencies:
     - miniaml

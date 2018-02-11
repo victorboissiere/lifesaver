@@ -1,4 +1,4 @@
-- minimal:
+minimal:
   description: Install basic shell configuration
   programs:
     - vim
@@ -13,7 +13,7 @@
         - CHOWN ~/.vim
         - grep "^alias" ./softwares/zsh/.zshrc > ~/.zshenv
         - pip3 install pep8 jedi
-- shell:
+shell:
     description: ZSH full shell configuration with oh my zsh
     dependencies:
       - minimal
@@ -25,7 +25,7 @@
           - exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
           - CP ./softwares/zsh/.zshrc ~/
           - grep "^alias" ~/.zshrc > ~/.zshenv
-- docker:
+docker:
   description: Install docker and docker-compose
   programs:
     - curl
@@ -40,7 +40,7 @@
         - curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
         - chmod +x /usr/local/bin/docker-compose
 
-- full:
+full:
   description: Install full shell configuration
   dependencies:
     - miniaml
