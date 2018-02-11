@@ -20,10 +20,10 @@ def print_usage():
 
 def get_shell_command(user, package_manager, shell_command):
     command_substitutions = {
-        "[PKG]": package_manager,
-        "[CP]": "cp -a",
-        "[CHOWN]": "chown -R {0}:{0}".format(user),
-        "[USER]": user,
+        "PKG": package_manager,
+        "CP": "cp -a",
+        "CHOWN": "chown -R {0}:{0}".format(user),
+        "USER": user,
     }
 
     for str_substitution, substitutionValue in command_substitutions.items():
