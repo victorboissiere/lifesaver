@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 from sys import argv
+from yaml import load
 import getpass
-import json
 import subprocess
 
 with open('config.json') as data_file:
-    INSTALL_CONFIG = json.load(data_file)
+    INSTALL_CONFIG = yaml.load(data_file)
 
 
 def print_usage():
