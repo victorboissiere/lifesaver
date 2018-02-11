@@ -54,7 +54,7 @@ def install(user, package_manager, mode, install_settings):
 def get_after_help(dependency):
     install_config_dep = INSTALL_CONFIG[dependency]
     if "after_help" in install_config_dep:
-        return "\n{0}: {1}".format(dependency, install_config_dep["after_help"])
+        return "\n  {0} dependency: {1}".format(dependency, install_config_dep["after_help"])
 
     return ""
 
@@ -70,7 +70,7 @@ if __name__ == "__main__":
         (_, packageManager, install_mode, userInstall) = argv
 
     settings = INSTALL_CONFIG[install_mode]
-    after_help = "=========\n\n"
+    after_help = ""
 
     if "dependencies" in settings:
         for dependency in INSTALL_CONFIG[install_mode]["dependencies"]:
@@ -79,6 +79,7 @@ if __name__ == "__main__":
 
 
     install(userInstall, packageManager, install_mode, INSTALL_CONFIG[install_mode])
-    after_help = get_after_help(install_mode)
 
-    print(after_help)
+    after_help += get_after_help(install_mode)
+    if len(after_help) > 0:
+        print("======= HELP INFO =====\n\n{0}".format(after_help))
