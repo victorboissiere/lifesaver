@@ -15,23 +15,34 @@ minimal:
         - pip3 install pep8 jedi
 
 shell:
-    description: ZSH full shell configuration with oh my zsh
-    dependencies:
-      - minimal
-    programs:
-      - zsh
-      - ranger
-    steps:
-      - description: Installing zsh custom configuration
-        commands:
-          - exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-          - CP ./softwares/zsh/.zshrc ~/
-          - grep "^alias" ~/.zshrc > ~/.zshenv
-      - description: Apply custom ranger configuration
-        commands:
-          - mkdir -p ~/.config/ranger
-          - CP ./softwares/ranger/rc.conf ~/.config/ranger/rc.conf
-    after_help: To switch default shell to zsh please run "chsh -s $(which zsh)"
+  description: ZSH full shell configuration with oh my zsh
+  dependencies:
+    - minimal
+  programs:
+    - zsh
+    - ranger
+  steps:
+    - description: Installing zsh custom configuration
+      commands:
+        - exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        - CP ./softwares/zsh/.zshrc ~/
+        - grep "^alias" ~/.zshrc > ~/.zshenv
+    - description: Apply custom ranger configuration
+      commands:
+        - mkdir -p ~/.config/ranger
+        - CP ./softwares/ranger/rc.conf ~/.config/ranger/rc.conf
+  after_help: To switch default shell to zsh please run "chsh -s $(which zsh)"
+
+server:
+  description: Install server vim and zsh configuration
+  dependencies:
+    - minimal
+    - shell
+  steps:
+    - description: Override default zsh prompt with server custom
+      commands:
+        - CP ./softwares/zsh/robbyrussell.zsh-theme ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+  after_help: Do not forget to source zsh "source ~/.zshrc"
 
 docker:
   description: Install docker and docker-compose

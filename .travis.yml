@@ -7,6 +7,8 @@ jobs:
   -
     script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s shell
   -
+    script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s server
+  -
     script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s docker
   -
     script: curl https://ls.gitcommit.fr -fsSL | sudo bash -s ansible
