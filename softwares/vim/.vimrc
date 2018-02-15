@@ -5,8 +5,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'msanders/snipmate.vim'
-Plug 'tpope/vim-surround'
 Plug 'trevordmiller/nova-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -101,6 +99,8 @@ let mapleader = ','
 
 " Make it easy to edit Vimrc
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
+" Make it easy to edit Vimrc
+nmap <Leader>ez :tabedit ~/.zshrc<cr>
 
 " Remove search higlight
 nmap <Leader><space> :nohlsearch<cr>
@@ -126,26 +126,17 @@ nmap <Leader>k :bd<cr>
 " Quickly execute shell command
 nmap <Leader>s :! 
 
-" Edit snippets
-nmap <Leader>es :e ~/.vim/snippets/
-
 " Create pdf Markdown
 nmap <Leader>m :!pandoc %:p -o /tmp/document.pdf -s -N && zathura /tmp/document.pdf  > /dev/null 2>&1 &<cr>
 
 " Open TODO.md
 nmap <Leader>et :tabe ~/TODO.md<cr>
 
-" Sudo permission fix
-cmap w!! w !sudo tee > /dev/null %
-cmap x!! x !sudo tee > /dev/null %
-
 " Save & quit actions
-nmap <C-W> :w<cr>
-imap <C-W> <Esc>:w<cr>
-nmap <C-X> :x<cr>
-imap <C-X> <Esc>:x<cr>
-nmap <C-C> :q<cr>
-imap <C-C> <Esc>:q<cr>
+nmap <Leader>w :w<cr>
+nmap <Leader>x :x<cr>
+noremap <Leader>c :q<cr>
+nmap <Leader>eq :q!<cr>
 
 " VimGrep
 nmap [q :cprev<cr>
@@ -243,8 +234,15 @@ let g:BASH_AuthorName   = 'VICTOR BOISSIERE'
 let g:BASH_Email        = 'victor.boissiere@gmail.com'
 let g:BASH_Company      = 'GitCommit'
 
+"/
+"/ Custom filetype
+"/
+
 augroup vagrant
 	au!
 	au BufRead,BufNewFile Vagrantfile set filetype=ruby
 augroup END
+
+au BufRead,BufNewFile */etc/nginx/sites-availables/* set ft=nginx
+au BufRead,BufNewFile */etc/nginx/conf.d/* set ft=nginx
 
