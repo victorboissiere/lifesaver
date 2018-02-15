@@ -82,4 +82,4 @@ if __name__ == "__main__":
 
     after_help += get_after_help(install_mode)
     if len(after_help) > 0:
-        print("\n\n======= HELP INFO =======\n\n{0}".format(after_help))
+        print("\n\n======= HELP INFO =======\n\n{0}\n\n".format(after_help))
