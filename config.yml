@@ -31,6 +31,7 @@ shell:
       commands:
         - mkdir -p ~/.config/ranger
         - CP ./softwares/ranger/rc.conf ~/.config/ranger/rc.conf
+        - CHOWN ~/.config
   after_help: To switch default shell to zsh please run "chsh -s $(which zsh)"
 
 server:
