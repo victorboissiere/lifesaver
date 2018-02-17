@@ -114,9 +114,6 @@ nmap <Leader>/ :NERDTreeToggle<cr>
 " Search all tags in files
 nmap <Leader>t :CtrlPBufTag<cr>
 
-" Search all tags with ctags
-nmap <Leader>f :tag<space>
-
 " Show recent files
 nmap <Leader>r :CtrlPMRUFiles<cr>
 
@@ -136,7 +133,7 @@ nmap <Leader>et :tabe ~/TODO.md<cr>
 nmap <Leader>w :w<cr>
 nmap <Leader>x :x<cr>
 noremap <Leader>c :q<cr>
-nmap <Leader>eq :q!<cr>
+nmap <Leader>fc :q!<cr>
 
 " VimGrep
 nmap [q :cprev<cr>
