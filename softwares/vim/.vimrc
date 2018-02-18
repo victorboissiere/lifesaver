@@ -14,6 +14,7 @@ Plug 'ronichoudhury/pep8.vim' " pip install pep8
 Plug 'davidhalter/jedi-vim' " pip install jedi
 Plug 'vim-scripts/bash-support.vim'
 Plug 'chr4/nginx.vim'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 "-- MISC --"
@@ -230,6 +231,14 @@ let g:netrw_sort_options = 'i'
 let g:BASH_AuthorName   = 'VICTOR BOISSIERE'
 let g:BASH_Email        = 'victor.boissiere@gmail.com'
 let g:BASH_Company      = 'GitCommit'
+
+"/
+"/ Terraform
+"/
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_remap_spacebar=1
+
 
 "/
 "/ Custom filetype
