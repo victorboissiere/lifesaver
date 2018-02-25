@@ -36,6 +36,7 @@ export LANG=en_US.UTF-8
 
 #-- DEVOPS --#
 
+# Docker
 alias dc='docker-compose'
 alias dr='docker'
 alias dprod='docker-compose -f docker-compose.prod.yml -f docker-compose.yml'
@@ -43,10 +44,18 @@ alias ddeploy='docker-compose up -d --no-deps --build'
 alias drmc='docker rm `docker ps -q -f status=exited`'
 alias drmi='docker rmi $(docker images -f "dangling=true" -q)'
 
+# Ansible
 alias ad='ansible-doc'
 alias ap='ansible-playbook'
 alias an='ansible'
+
+# Vagrant
 alias vg='vagrant'
+alias vggs='vagrant global-status'
+
+# Terraform
+alias tf='terraform'
+alias tfp='terraform plan'
 
 #-- LARAVEL --#
 ###############
