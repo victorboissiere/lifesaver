@@ -1,18 +1,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'pearofducks/ansible-vim'
-Plug 'crusoexia/vim-monokai'
-Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'trevordmiller/nova-vim'
 Plug 'joshdick/onedark.vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-fugitive'
 Plug 'posva/vim-vue'
-Plug 'ronichoudhury/pep8.vim' " pip install pep8
-Plug 'davidhalter/jedi-vim' " pip install jedi
-Plug 'vim-scripts/bash-support.vim'
 Plug 'chr4/nginx.vim'
 Plug 'hashivim/vim-terraform'
 call plug#end()
@@ -122,7 +115,16 @@ nmap <Leader>r :CtrlPMRUFiles<cr>
 nmap <Leader>k :bd<cr>
 
 " Quickly execute shell command
-nmap <Leader>s :! 
+nmap <Leader>ss :! 
+
+" Set nginx syntax
+nmap <Leader>sn :set ft=nginx<cr>
+
+" Show tab and return to line (enable)
+nmap <Leader>se :set list<cr>
+
+" Show tab and return to line (disable)
+nmap <Leader>sd :set nolist<cr>
 
 " Create pdf Markdown
 nmap <Leader>m :!pandoc %:p -o /tmp/document.pdf -s -N && zathura /tmp/document.pdf  > /dev/null 2>&1 &<cr>
@@ -148,6 +150,9 @@ nmap ]Q :clast<cr>
 
 " Disable expandtab for Makefile files
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+" Enable javascript syntax for typescript files
+autocmd BufNewFile,BufRead *.ts setlocal ft=javascript noexpandtab
 
 " Automatically source the Vimrc file on save
 augroup autosourcing
