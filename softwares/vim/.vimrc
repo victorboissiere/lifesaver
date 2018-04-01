@@ -8,6 +8,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'posva/vim-vue'
 Plug 'chr4/nginx.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 "-- MISC --"
@@ -55,7 +57,8 @@ syntax enable
 set t_Co=256
 
 " Theme
-silent! colorscheme onedark
+colorscheme onedark
+set background=dark
 
 " Highlight trailing white space end of line
 :highlight ExtraWhiteSpace ctermbg=red guibg=red
@@ -105,9 +108,6 @@ nmap <Leader>q :ccl<cr>
 " Toggle left tree
 nmap <Leader>/ :NERDTreeToggle<cr>
 
-" Search all tags in files
-nmap <Leader>t :CtrlPBufTag<cr>
-
 " Show recent files
 nmap <Leader>r :CtrlPMRUFiles<cr>
 
@@ -143,6 +143,9 @@ nmap [q :cprev<cr>
 nmap ]q :cnext<cr>
 nmap [Q :cfirst<cr>
 nmap ]Q :clast<cr>
+
+" CtrlP
+nmap <c-b> :CtrlPBuffer<cr>
 
 
 "-- AUTO COMMANDS --"
@@ -203,7 +206,7 @@ nmap <s-tab> gT
 
 let g:ctrlp_custom_ignore = 'node_modules/DS_Store\|git\|vendor'
 
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:30'
 let g:ctrlp_tabpage_position = 'ac'
 let g:ctrlp_working_path_mode = 0
 " Prevent file from being opened in nerd tree
@@ -227,15 +230,6 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_banner       = 0
 let g:netrw_liststyle    = 3
 let g:netrw_sort_options = 'i'
-
-"/
-"/ Bash
-"/
-
-" Configure bash comments
-let g:BASH_AuthorName   = 'VICTOR BOISSIERE'
-let g:BASH_Email        = 'victor.boissiere@gmail.com'
-let g:BASH_Company      = 'GitCommit'
 
 "/
 "/ Terraform

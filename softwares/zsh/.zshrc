@@ -26,6 +26,7 @@ function mkcd()
 {
   mkdir $1 && cd $1
 }
+alias cpass='lpass show -Gpc'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
