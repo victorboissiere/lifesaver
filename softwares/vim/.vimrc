@@ -3,13 +3,14 @@ Plug 'pearofducks/ansible-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'posva/vim-vue'
 Plug 'chr4/nginx.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 "-- MISC --"
@@ -57,7 +58,7 @@ syntax enable
 set t_Co=256
 
 " Theme
-colorscheme onedark
+colorscheme papercolor
 set background=dark
 
 " Highlight trailing white space end of line
@@ -126,8 +127,8 @@ nmap <Leader>se :set list<cr>
 " Show tab and return to line (disable)
 nmap <Leader>sd :set nolist<cr>
 
-" Create pdf Markdown
-nmap <Leader>m :!pandoc %:p -o /tmp/document.pdf -s -N && zathura /tmp/document.pdf  > /dev/null 2>&1 &<cr>
+" Show markdown TOC
+nmap <Leader>mt :Toch<cr>
 
 " Open TODO.md
 nmap <Leader>et :tabe ~/TODO.md<cr>
@@ -237,6 +238,12 @@ let g:netrw_sort_options = 'i'
 let g:terraform_align=1
 let g:terraform_fold_sections=1
 let g:terraform_remap_spacebar=1
+
+"/
+"/ Markdown
+"/
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
 
 
 "/
