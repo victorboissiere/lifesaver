@@ -10,6 +10,7 @@ minimal:
         - CP ./softwares/vim/.vimrc ~/.vimrc
         - curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         - ["vim", "+silent", "+PlugInstall", "+qall"]
+        -  mkdir -p ~/.vim/swap && mkdir -p ~/.vim/undo
         - CHOWN ~/.vim
         - grep "^alias" ./softwares/zsh/.zshrc > ~/.zshenv
 

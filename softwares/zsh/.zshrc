@@ -22,15 +22,18 @@ export EDITOR="vim"
 alias python='python3'
 alias pip='pip3'
 alias v='vim'
+alias cpass='lpass show -Gpc'
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+#-- NAVIGATION --#
+##################
 
 function mkcd()
 {
   mkdir $1 && cd $1
 }
-alias cpass='lpass show -Gpc'
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
 
 #-- WEBSITES --#

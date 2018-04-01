@@ -47,7 +47,13 @@ set relativenumber
 
 " Load shell aliases and settings
 set shell=zsh
-" set shellcmdflag=-ic
+
+" Put swap files in fixed place
+set swapfile
+set dir=~/.vim/swap
+" Put undo files in fixed place
+set undofile
+set undodir=~/.vim/undo
 
 "-- VISUAL --"
 """"""""""""""
