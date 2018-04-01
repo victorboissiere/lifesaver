@@ -35,6 +35,18 @@ function mkcd()
   mkdir $1 && cd $1
 }
 
+function vs()
+{
+  RESULTS=`find . -type f -not -path '*/\.*' -name "*$1*"`
+  red() { echo -e "\033[00;31m$1\033[0m"; }
+  if [ $(echo $RESULTS | wc -w) -eq "1" ]; then
+    $EDITOR $(echo "$RESULTS" | head -n1 | cut -d " " -f1)
+  else
+    red "Error. Found more than one file"
+    column <<< "$(printf '%s\n' $RESULTS)"
+  fi
+}
+
 
 #-- WEBSITES --#
 ################
