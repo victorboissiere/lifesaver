@@ -64,7 +64,7 @@ syntax enable
 set t_Co=256
 
 " Theme
-colorscheme papercolor
+colorscheme PaperColor
 set background=dark
 
 " Highlight trailing white space end of line
