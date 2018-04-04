@@ -55,6 +55,9 @@ set dir=~/.vim/swap
 set undofile
 set undodir=~/.vim/undo
 
+" disabling auto commenting on new line, e.g. 'o' and 'O'
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 "-- VISUAL --"
 """"""""""""""
 
@@ -103,7 +106,8 @@ let mapleader = ','
 
 " Make it easy to edit Vimrc
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
-" Make it easy to edit Vimrc
+
+" Make it easy to edit Zshrc
 nmap <Leader>ez :tabedit ~/.zshrc<cr>
 
 " Remove search higlight
@@ -114,9 +118,6 @@ nmap <Leader>q :ccl<cr>
 
 " Toggle left tree
 nmap <Leader>/ :NERDTreeToggle<cr>
-
-" Show recent files
-nmap <Leader>r :CtrlPMRUFiles<cr>
 
 "Close vinegar
 nmap <Leader>k :bd<cr>
@@ -250,6 +251,11 @@ let g:terraform_remap_spacebar=1
 "/
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
+
+"/
+"/ Airline
+"/
+let g:airline_highlighting_cache = 1
 
 
 "/
