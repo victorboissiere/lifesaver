@@ -1,0 +1,24 @@
+[global_config]
+  title_font = Sans 11
+  title_inactive_bg_color = "#282c34"
+  title_inactive_fg_color = "#ffffff"
+  title_receive_bg_color = "#282c34"
+  title_transmit_bg_color = "#282c34"
+  title_use_system_font = False
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#282c34"
+    background_image = None
+    cursor_color = "#a3b3cc"
+    foreground_color = "#dcdfe4"
+    palette = "#282c34:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#dcdfe4:#282c34:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#dcdfe4"
