@@ -6,7 +6,9 @@ cp ~/.vimrc ./softwares/vim/
 cp ~/.zshrc ./softwares/zsh
 cp -r ~/.oh-my-zsh/custom ./softwares/zsh
 cp ~/.config/ranger/rc.conf ./softwares/ranger
-cp ~/.config/terminator/config ./softwares/terminator
+if [ -d ~/.config/terminator ]; then
+  cp ~/.config/terminator/config ./softwares/terminator
+fi
 
 if [  -n "$(git status --porcelain)" ]; then
   echo "Done!"

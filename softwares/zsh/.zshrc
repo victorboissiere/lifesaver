@@ -9,7 +9,7 @@ export COMPOSER_DISABLE_XDEBUG_WARN=false
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git zsh-syntax-highlighting yarn docker kubectl)
+plugins=(git zsh-syntax-highlighting yarn docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,14 +39,6 @@ function mkcd()
 ################
 
 #-- DEVOPS --#
-
-# Docker
-alias dc='docker-compose'
-alias dr='docker'
-alias dprod='docker-compose -f docker-compose.prod.yml -f docker-compose.yml'
-alias ddeploy='docker-compose up -d --no-deps --build'
-alias drmc='docker rm `docker ps -q -f status=exited`'
-alias drmi='docker rmi $(docker images -f "dangling=true" -q)'
 
 # Ansible
 alias ad='ansible-doc'
