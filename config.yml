@@ -47,6 +47,16 @@ server:
         - CP ./softwares/zsh/robbyrussell.zsh-theme ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
   after_help: Do not forget to source zsh "source ~/.zshrc"
 
+sshagent:
+  description: Install ssh agent persistence
+  steps:
+    - description: Install ssh agent persistent using ssh-agent-setup project
+      commands:
+        - wget https://raw.githubusercontent.com/victorboissiere/ssh-agent-setup/master/setup.sh
+        - chmod +x setup.sh
+        - ./setup.sh
+        - rm setup.sh
+
 docker:
   description: Install docker and docker-compose
   programs:
