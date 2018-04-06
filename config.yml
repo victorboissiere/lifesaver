@@ -52,10 +52,7 @@ sshagent:
   steps:
     - description: Install ssh agent persistent using ssh-agent-setup project
       commands:
-        - wget https://raw.githubusercontent.com/victorboissiere/ssh-agent-setup/master/setup.sh
-        - chmod +x setup.sh
-        - ./setup.sh
-        - rm setup.sh
+        - wget -O - https://raw.githubusercontent.com/victorboissiere/ssh-agent-setup/master/setup.sh | bash
 
 docker:
   description: Install docker and docker-compose
