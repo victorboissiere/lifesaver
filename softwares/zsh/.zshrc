@@ -9,7 +9,7 @@ export COMPOSER_DISABLE_XDEBUG_WARN=false
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git zsh-syntax-highlighting yarn docker docker-compose)
+plugins=(git zsh-syntax-highlighting yarn docker docker-compose kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
