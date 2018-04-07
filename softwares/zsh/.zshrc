@@ -53,6 +53,12 @@ alias vggs='vagrant global-status'
 alias tf='terraform'
 alias tfp='terraform plan'
 
+# Network
+alias publicip='curl ip.gitcommit.fr'
+
+# Filesysytem
+listsizes() { du -h -d 1 "${1:=./}" | grep M | sort -n -r | head }
+
 #-- LARAVEL --#
 ###############
 
@@ -80,24 +86,8 @@ alias gl="git log --oneline"
 alias gf="git fetch"
 alias gm="git merge"
 alias nah="git reset --hard HEAD"
+gquick() { gaa && gc $1 && gpo ${2:=master} }
 
-# Open git in browser
-function go() {
-  giturl=$(git config --get remote.origin.url)
-  if [ "$giturl" = "" ]; then
-     echo "Not a git repository or no remote.origin.url set"
-     return
-  fi
-
-  giturl=${giturl/git\@github\.com\:/https://github.com/}
-  giturl=${giturl/\.git/\/tree/}
-  branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
-  branch="(unnamed branch)"     # detached HEAD
-  branch=${branch##refs/heads/}
-  giturl=$giturl$branch
-  "Opening your git.."
-  google-chrome $giturl > /dev/null 2>&1
-}
 
 #-- CONFIG FILES --#
 ####################
