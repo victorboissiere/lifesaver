@@ -11,6 +11,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'plasticboy/vim-markdown'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 call plug#end()
 
 "-- MISC --"
