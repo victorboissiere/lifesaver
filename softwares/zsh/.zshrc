@@ -23,6 +23,8 @@ alias python='python3'
 alias pip='pip3'
 alias v='vim'
 alias cpass='lpass show -Gpc'
+alias vzsh='vim ~/.zshrc'
+alias szsh='source ~/.zshrc'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
