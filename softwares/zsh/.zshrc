@@ -61,6 +61,10 @@ alias publicip='curl ip.gitcommit.fr'
 # Filesysytem
 listsizes() { du -h -d 1 "${1:=./}" | grep M | sort -n -r | head }
 
+checkhaproxy() { haproxy -c -V -f ${1:=/etc/haproxy/haproxy.cfg} }
+alias checklogrotate='sudo logrotate -d'
+alias checkdnsmasq='dnsmasq --test'
+
 #-- LARAVEL --#
 ###############
 
