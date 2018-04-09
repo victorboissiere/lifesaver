@@ -1,17 +1,13 @@
 call plug#begin('~/.vim/plugged')
-Plug 'pearofducks/ansible-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'posva/vim-vue'
-Plug 'chr4/nginx.vim'
-Plug 'hashivim/vim-terraform'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'plasticboy/vim-markdown'
-Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 "-- MISC --"
@@ -241,13 +237,6 @@ let g:netrw_liststyle    = 3
 let g:netrw_sort_options = 'i'
 
 "/
-"/ Terraform
-"/
-let g:terraform_align=1
-let g:terraform_fold_sections=1
-let g:terraform_remap_spacebar=1
-
-"/
 "/ Markdown
 "/
 let g:vim_markdown_folding_disabled = 1
@@ -257,6 +246,11 @@ let g:vim_markdown_toc_autofit = 1
 "/ Airline
 "/
 let g:airline_highlighting_cache = 1
+
+"/
+"/ Polygot
+"/
+let g:polyglot_disabled = ['markdown']
 
 
 "/
