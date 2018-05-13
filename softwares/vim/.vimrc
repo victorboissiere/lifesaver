@@ -134,6 +134,10 @@ nmap <Leader>sd :set nolist<cr>
 " Show markdown TOC
 nmap <Leader>mt :Toch<cr>
 
+" Toggle set paste / notpaste
+nmap <Leader>p :set paste<cr>
+nmap <Leader>P :set nopaste<cr>
+
 " Open TODO.md
 nmap <Leader>et :tabe ~/TODO.md<cr>
 
