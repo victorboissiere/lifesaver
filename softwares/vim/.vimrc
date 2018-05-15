@@ -95,6 +95,11 @@ noremap l k
 noremap k j
 noremap j h
 
+" Auto complete scroll up/down
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+
 "-- MAPPINGS --"
 """"""""""""""""
 
