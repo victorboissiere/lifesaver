@@ -19,12 +19,12 @@ type Installation struct {
 }
 type InstallStep struct {
 	Description string
-	ConfigFiles []ConfigFile
+	ConfigFiles []ConfigFile `yaml:"configFiles"`
 	Commands    []string
 }
 type ConfigFile struct {
-	src string
-	dst string
+	Src string
+	Dst string
 }
 
 func getConfig() Config {
@@ -70,8 +70,8 @@ func installPrograms(programs []string) {
 func importConfigFiles(configFiles []ConfigFile) {
 	fmt.Println("[STEP][CONFIG_FILES]")
 	for _, configFile := range configFiles {
-		fmt.Printf("[STEP[CONFIG_FILE] %s => %s\n", configFile.src, configFile.dst)
-		execCommand(fmt.Sprintf("wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/softwares/%s > %s", configFile.src, configFile.dst))
+		fmt.Printf("[STEP[CONFIG_FILE] %s => %s\n", configFile.Src, configFile.Dst)
+		execCommand(fmt.Sprintf("wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/softwares/%s > %s", configFile.Src, configFile.Dst))
 	}
 }
 

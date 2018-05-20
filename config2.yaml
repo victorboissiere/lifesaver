@@ -8,7 +8,7 @@ minimal:
     - description: Installing vim configuration
       configFiles:
         - src: softwares/vim/.vimrc
-          dest: ~/.vimrc
+          dst: ~/.vimrc
       commands:
         - curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         - vim +silent +PlugInstall +qall
