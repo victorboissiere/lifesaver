@@ -7,4 +7,4 @@ before_install:
 jobs:
   include:
   - stage: Install commandes
-    script: ./main minimal
+    script: sudo ./main minimal
