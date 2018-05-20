@@ -19,7 +19,12 @@ type Installation struct {
 }
 type InstallStep struct {
 	Description string
+	configFiles []ConfigFile
 	Commands    []string
+}
+type ConfigFile struct {
+	src string
+	dst string
 }
 
 func getConfig() Config {
@@ -46,14 +51,27 @@ func printUsage(config Config) {
 	os.Exit(1)
 }
 
+func execCommand(command string) {
+	shellCommand := strings.Split(command, " ")
+	cmd := exec.Command(shellCommand[0], shellCommand[1:]...)
+	if out, err := cmd.CombinedOutput(); err != nil {
+		log.Fatalf("Stdout: %sFailed with %s\n", out, err)
+	}
+}
+
 func installPrograms(programs []string) {
 	fmt.Println("[PROGRAMS]")
 	for _, program := range programs {
 		fmt.Printf("[PROGRAM] %s\n", strings.ToUpper(program))
-		cmd := exec.Command("apt", "install", "-y", program)
-		if out, err := cmd.CombinedOutput(); err != nil {
-			log.Fatalf("Stdout: %sFailed with %s\n", out, err)
-		}
+		execCommand("apt install -y " + program)
+	}
+}
+
+func importConfigFiles(configFiles []ConfigFile) {
+	fmt.Println("[STEP][CONFIG_FILES]")
+	for _, configFile := range configFiles {
+		fmt.Printf("[STEP[CONFIG_FILE] %s => %s\n", configFile.src, configFile.dst)
+		execCommand(fmt.Sprintf("wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/softwares/%s > %s", configFile.src, configFile.dst))
 	}
 }
 
@@ -61,12 +79,9 @@ func installSteps(steps []InstallStep) {
 	fmt.Println("[STEPS]")
 	for _, step := range steps {
 		fmt.Printf("[STEP] %s\n", step.Description)
+		importConfigFiles(step.configFiles)
 		for _, command := range step.Commands {
-			shellCommand := strings.Split(command, " ")
-			cmd := exec.Command(shellCommand[0], shellCommand[1:]...)
-			if out, err := cmd.CombinedOutput(); err != nil {
-				log.Fatalf("Stdout: %sFailed with %s\n", out, err)
-			}
+			execCommand(command)
 		}
 	}
 }
