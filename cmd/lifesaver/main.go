@@ -15,10 +15,11 @@ type Installation struct {
 	Description  string
 	Programs     []string
 	Dependencies []string // optional
-	Steps []struct {
-		Description string
-		Commands    interface{}
-	}
+	Steps []InstallStep
+}
+type InstallStep struct {
+	Description string
+	Commands    []string
 }
 
 func getConfig() Config {
@@ -46,6 +47,7 @@ func printUsage(config Config) {
 }
 
 func installPrograms(programs []string) {
+	fmt.Println("[PROGRAMS]")
 	for _, program := range programs {
 		fmt.Printf("[PROGRAM] %s\n", strings.ToUpper(program))
 		cmd := exec.Command("apt", "install", "-y", program)
@@ -55,9 +57,23 @@ func installPrograms(programs []string) {
 	}
 }
 
+func installSteps(steps []InstallStep) {
+	fmt.Println("[STEPS]")
+	for _, step := range steps {
+		fmt.Printf("[STEP] %s\n", step.Description)
+		for _, command := range step.Commands {
+			shellCommand := strings.Split(command, " ")
+			cmd := exec.Command(shellCommand[0], shellCommand[1:]...)
+			if out, err := cmd.CombinedOutput(); err != nil {
+				log.Fatalf("Stdout: %sFailed with %s\n", out, err)
+			}
+		}
+	}
+}
+
 func install(installation Installation) {
-	fmt.Println("[PROGRAMS] Installing")
 	installPrograms(installation.Programs)
+	installSteps(installation.Steps)
 }
 
 func main()  {
@@ -75,4 +91,5 @@ func main()  {
 
 	fmt.Printf("====> Installing '%s'\n", installCommand)
 	install(installation)
+	fmt.Println("Done! Thank you for using LifeSaver")
 }
