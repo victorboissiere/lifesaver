@@ -1,7 +1,7 @@
 language: go
 
 before_install:
-  - go get cmd
+  - go get gopkg.in/yaml.v2.
   - go build ./cmd/lifesaver/main.go
 
 jobs:
