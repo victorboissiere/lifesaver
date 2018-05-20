@@ -67,11 +67,25 @@ func installPrograms(programs []string) {
 	}
 }
 
+func getUsername() string {
+	if user, ok := os.LookupEnv("SUDO_USER"); ok {
+		return user
+	}
+
+	return os.Getenv("USER")
+}
+
+func setOwnership(filename string) {
+	username := getUsername()
+	execCommand(fmt.Sprintf("chown -R %s:%s %s", username, username, filename))
+}
+
 func importConfigFiles(configFiles []ConfigFile) {
 	fmt.Println("[STEP][CONFIG_FILES]")
 	for _, configFile := range configFiles {
 		fmt.Printf("[STEP[CONFIG_FILE] %s => %s\n", configFile.Src, configFile.Dst)
-		execCommand(fmt.Sprintf("wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/master/%s > %s", configFile.Src, configFile.Dst))
+		execCommand(fmt.Sprintf("wget https://raw.githubusercontent.com/victorboissiere/lifesaver/master/%s -O %s", configFile.Src, configFile.Dst))
+		setOwnership(configFile.Dst)
 	}
 }
 
