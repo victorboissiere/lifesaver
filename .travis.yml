@@ -1,0 +1,9 @@
+language: go
+
+before_install:
+  - go build ./cmd/lifesaver/main.go
+
+jobs:
+  include:
+  - stage: Install commandes
+    script: ./main minimal
