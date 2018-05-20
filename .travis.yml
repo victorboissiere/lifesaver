@@ -1,6 +1,7 @@
 language: go
 
 before_install:
+  - go get cmd
   - go build ./cmd/lifesaver/main.go
 
 jobs:
