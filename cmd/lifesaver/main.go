@@ -19,7 +19,7 @@ type Installation struct {
 }
 type InstallStep struct {
 	Description string
-	configFiles []ConfigFile
+	ConfigFiles []ConfigFile
 	Commands    []string
 }
 type ConfigFile struct {
