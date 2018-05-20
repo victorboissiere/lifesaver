@@ -79,7 +79,7 @@ func installSteps(steps []InstallStep) {
 	fmt.Println("[STEPS]")
 	for _, step := range steps {
 		fmt.Printf("[STEP] %s\n", step.Description)
-		importConfigFiles(step.configFiles)
+		importConfigFiles(step.ConfigFiles)
 		for _, command := range step.Commands {
 			execCommand(command)
 		}
