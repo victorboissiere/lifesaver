@@ -7,6 +7,8 @@ import (
 	"strconv"
 	"os/user"
 	"strings"
+	"net/http"
+	"io"
 )
 
 func resolveTilde(command string) string {
@@ -24,6 +26,27 @@ func execCommand(command string) {
 	if out, err := cmd.CombinedOutput(); err != nil {
 		log.Fatalf("Stdout: %sFailed with %s\n", out, err)
 	}
+}
+
+func downloadFile(url string, filename string) error {
+	resp, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	out, err := os.Create(resolveTilde(filename))
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, resp.Body)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func getEnvNumber(env string) int {

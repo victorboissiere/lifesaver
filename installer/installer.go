@@ -10,7 +10,7 @@ func importConfigFiles(configFiles []ConfigFile) {
 
 	for _, configFile := range configFiles {
 		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", configFile.Src, configFile.Dst)
-		execCommand(fmt.Sprintf("wget -O %s https://raw.githubusercontent.com/victorboissiere/lifesaver/master/%s", configFile.Dst, configFile.Src))
+		downloadFile(fmt.Sprintf("https://raw.githubusercontent.com/victorboissiere/lifesaver/master/%s", configFile.Src), configFile.Dst)
 		setOwnership(configFile.Dst)
 	}
 }
