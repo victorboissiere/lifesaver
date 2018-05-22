@@ -5,6 +5,8 @@ go:
 
 before_install:
   - go get gopkg.in/yaml.v2
+
+install:
   - go build lifesaver.go
 
 jobs:
