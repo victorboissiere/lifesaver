@@ -8,7 +8,6 @@ import (
 	"os/user"
 	"strings"
 	"net/http"
-	"io"
 	"fmt"
 	"io/ioutil"
 )
@@ -39,7 +38,7 @@ func DownloadFile(url string, filename string) error {
 		return err
 	}
 	defer resp.Body.Close()
-	_, errBody := ioutil.ReadAll(resp.Body)
+	contents, errBody := ioutil.ReadAll(resp.Body)
 	if errBody != nil {
 		fmt.Printf("%s", errBody)
 		os.Exit(1)
@@ -51,7 +50,7 @@ func DownloadFile(url string, filename string) error {
 	}
 	defer out.Close()
 
-	_, err = io.Copy(out, resp.Body)
+	err = ioutil.WriteFile(resolveTilde(filename), contents, 0644)
 	if err != nil {
 		return err
 	}
