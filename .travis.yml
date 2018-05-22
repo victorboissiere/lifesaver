@@ -12,4 +12,4 @@ install:
 jobs:
   include:
   - stage: Install commands
-    script: sudo ./lifesaver minimal && ls -la && test -f ~/.vimrc
+    script: sudo ./lifesaver minimal && ls -la ~ && test -f ~/.vimrc

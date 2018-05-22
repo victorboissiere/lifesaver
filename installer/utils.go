@@ -8,7 +8,7 @@ import (
 )
 
 func execCommand(command string) {
-	cmd := exec.Command("bash", "-c", command)
+	cmd := exec.Command(os.Getenv("SHELL"), "-c", command)
 	if out, err := cmd.CombinedOutput(); err != nil {
 		log.Fatalf("Stdout: %sFailed with %s\n", out, err)
 	}
