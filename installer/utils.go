@@ -52,6 +52,15 @@ func DownloadFile(url string, filename string) error {
 	return nil
 }
 
+func getEnvNumber(env string) int {
+	envInt, err := strconv.Atoi(env)
+	if err != nil {
+		log.Fatalf("Error converting SUDO_GID: %s\n", err)
+	}
+
+	return envInt
+}
+
 func getUID() string {
 	if uid, ok := os.LookupEnv("SUDO_UID"); ok {
 		return uid
@@ -60,8 +69,16 @@ func getUID() string {
 	return strconv.Itoa(os.Getuid())
 }
 
+func getGID() string {
+	if gid, ok := os.LookupEnv("SUDO_GID"); ok {
+		return gid
+	}
+
+	return strconv.Itoa(os.Getgid())
+}
+
 func setOwnership(filename string) {
-	err := os.Chown(resolveTilde(filename), os.Getuid(), os.Getgid())
+	err := os.Chown(resolveTilde(filename), getEnvNumber(getUID()), getEnvNumber(getGID()))
 	if err != nil {
 		log.Fatalf("Error setting permissions: %s\n", err)
 	}
