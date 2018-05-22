@@ -66,6 +66,6 @@ func InstallConfig(config Config, installCommand string) {
 
 	fmt.Printf("====> Installing '%s'\n", installCommand)
 	install(installation)
-	fmt.Sprintf("%s%s", postInstallHelp, getPostInstallHelp(installation.AfterHelp))
+	fmt.Printf("%s%s", postInstallHelp, getPostInstallHelp(installation.AfterHelp))
 }
 
