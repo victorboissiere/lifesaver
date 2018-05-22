@@ -1,7 +1,6 @@
 package installer
 
 import (
-	"strings"
 	"os/exec"
 	"log"
 	"os"
@@ -9,8 +8,7 @@ import (
 )
 
 func execCommand(command string) {
-	shellCommand := strings.Split(command, " ")
-	cmd := exec.Command(shellCommand[0], shellCommand[1:]...)
+	cmd := exec.Command("sh", "-c", command)
 	if out, err := cmd.CombinedOutput(); err != nil {
 		log.Fatalf("Stdout: %sFailed with %s\n", out, err)
 	}
