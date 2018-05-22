@@ -21,8 +21,7 @@ func resolveTilde(command string) string {
 }
 
 func execCommand(command string) {
-	shellCommand := strings.Split(resolveTilde(command), " ")
-	cmd := exec.Command(shellCommand[0], shellCommand[1:]...)
+	cmd := exec.Command(os.Getenv("SHELL"), "-c", command)
 	if out, err := cmd.CombinedOutput(); err != nil {
 		log.Fatalf("Stdout: %sFailed with %s\n", out, err)
 	}
