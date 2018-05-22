@@ -16,5 +16,5 @@ fi
 
 wget -O /tmp/lifesaver "https://raw.githubusercontent.com/victorboissiere/lifesaver/go/bin/$platform"
 chmod +x /tmp/lifesaver
-sudo bash /tmp/lifesaver $@
+sudo /tmp/lifesaver $@
 rm /tmp/lifesaver
