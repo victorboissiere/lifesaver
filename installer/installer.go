@@ -1,6 +1,9 @@
-package main
+package installer
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func importConfigFiles(configFiles []ConfigFile) {
 	fmt.Println("[STEP][CONFIG_FILES]")
@@ -22,9 +25,16 @@ func installSteps(steps []InstallStep) {
 	}
 }
 
-func install(installation Installation) {
+func installPrograms(programs []string) {
+	fmt.Println("[PROGRAMS]")
+	for _, program := range programs {
+		fmt.Printf("[PROGRAM] %s\n", strings.ToUpper(program))
+		execCommand("apt install -y " + program)
+	}
+}
+
+func Install(installation Installation) {
 	installPrograms(installation.Programs)
 	installSteps(installation.Steps)
 }
-
 
