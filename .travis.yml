@@ -2,9 +2,9 @@ language: go
 
 before_install:
   - go get gopkg.in/yaml.v2
-  - go build ./cmd/lifesaver/main.go
+  - go build ./cmd/lifesaver
 
 jobs:
   include:
-  - stage: Install commandes
+  - stage: Install commands
     script: sudo ./main minimal
