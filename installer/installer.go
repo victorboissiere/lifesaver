@@ -53,7 +53,6 @@ func install(installation Installation)  {
 	installSteps(installation.Steps)
 }
 
-
 func InstallConfig(config Config, installCommand string) {
 	postInstallHelp := ""
 	installation := config[installCommand]

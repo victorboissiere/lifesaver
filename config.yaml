@@ -37,3 +37,54 @@ shell:
       commands:
         - mkdir -p ~/.config/ranger
   afterHelp: To switch default shell to zsh please run "chsh -s $(which zsh)"
+
+server:
+  description: Install server vim and zsh configuration
+  dependencies:
+    - minimal
+    - shell
+  steps:
+    - description: Override default zsh prompt with server custom
+      configFiles:
+        - src: ./softwares/zsh/robbyrussell.zsh-theme
+          dst: ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+  after_help: Do not forget to source zsh "source ~/.zshrc"
+
+sshagent:
+  description: Install ssh agent persistence
+  steps:
+    - description: Install ssh agent persistent using ssh-agent-setup project
+      commands:
+        - wget -O - https://raw.githubusercontent.com/victorboissiere/ssh-agent-setup/master/setup.sh | bash
+
+docker:
+  description: Install docker and docker-compose
+  programs:
+    - curl
+    - software-properties-common
+    - apt-transport-https
+  steps:
+    - description: Docker configuration
+      commands:
+        - curl -fsSL get.docker.com -o get-docker.sh
+        - sh get-docker.sh
+        - usermod -aG docker $SUDO_USER
+        - curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+        - chmod +x /usr/local/bin/docker-compose
+
+ansible:
+  description: Install ansible with required packages
+  programs:
+    - python-passlib
+  steps:
+    - description: Install passlib
+      commands:
+        - pip3 install -i https://pypi.python.org/simple/ --upgrade pip
+        - pip3 install ansible
+
+full:
+  description: Install full shell configuration
+  dependencies:
+    - minimal
+    - shell
+
