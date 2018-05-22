@@ -4,5 +4,5 @@ mkdir -p bin
 
 for plateform in "linux"
 do
-    GOOSE=$plateform go build -o "bin/$plateform"
+    GOOS=linux go build -o "bin/$plateform"
 done

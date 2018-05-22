@@ -14,5 +14,7 @@ else
     exit 1
 fi
 
-wget -O /tmp/lifesaver "https://raw.githubusercontent.com/victorboissiere/lifesaver/go/releases/$plateform"
+wget -O /tmp/lifesaver "https://raw.githubusercontent.com/victorboissiere/lifesaver/go/bin/$platform"
+chmod +x /tmp/lifesaver
+sudo bash /tmp/lifesaver $@
 rm /tmp/lifesaver
