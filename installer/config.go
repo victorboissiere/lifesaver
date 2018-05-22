@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"log"
 	"gopkg.in/yaml.v2"
+	"os"
 )
 
 type Config map[string]Installation
@@ -24,9 +25,10 @@ type ConfigFile struct {
 	Dst string
 }
 
-
 func GetConfig() Config {
-	yamlFile, err := ioutil.ReadFile("config2.yaml")
+	tmpConfigFile := "/tmp/lifesaver_config.yaml"
+	DownloadFile(getRepoFileURL("config.yaml"), tmpConfigFile)
+	yamlFile, err := ioutil.ReadFile(tmpConfigFile)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -36,6 +38,8 @@ func GetConfig() Config {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	os.Remove(tmpConfigFile)
 
 	return config
 }

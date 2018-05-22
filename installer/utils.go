@@ -9,7 +9,12 @@ import (
 	"strings"
 	"net/http"
 	"io"
+	"fmt"
 )
+
+func getRepoFileURL(filename string) string {
+	return fmt.Sprintf("https://raw.githubusercontent.com/victorboissiere/lifesaver/go/%s", filename)
+}
 
 func resolveTilde(command string) string {
 	usr, err := user.LookupId(getUID())
@@ -27,7 +32,7 @@ func execCommand(command string) {
 	}
 }
 
-func downloadFile(url string, filename string) error {
+func DownloadFile(url string, filename string) error {
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
