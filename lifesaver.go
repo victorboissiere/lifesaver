@@ -23,12 +23,11 @@ func main()  {
 	}
 
 	installCommand := os.Args[1]
-	installation, isValid := config[installCommand]
+	_, isValid := config[installCommand]
 	if !isValid {
 		printUsage(config)
 	}
 
-	fmt.Printf("====> Installing '%s'\n", installCommand)
-	installer.Install(installation)
+	installer.InstallConfig(config, installCommand)
 	fmt.Println("\nDone! Thank you for using LifeSaver")
 }

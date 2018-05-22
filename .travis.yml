@@ -13,8 +13,8 @@ jobs:
   include:
   - stage: Install commands from build
     script: sudo ./lifesaver minimal && ls -la ~ && test -f ~/.vimrc
-  - script: sudo ./lifesaver full && ls -la ~ && test -f ~/.vimrc
+  - script: sudo ./lifesaver shell && ls -la ~ && test -f ~/.vimrc
   - stage: Install commands from compiled binaries
     script: wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/go/install.sh | sudo bash -s minimal
-  - script: wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/go/install.sh | sudo bash -s full
+  - script: wget -O - https://raw.githubusercontent.com/victorboissiere/lifesaver/go/install.sh | sudo bash -s shell
   #  script: wget -O - https://ls.gitcommit.fr | sudo bash -s minimal

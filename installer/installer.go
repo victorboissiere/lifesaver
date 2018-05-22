@@ -14,10 +14,12 @@ func importConfigFiles(configFiles []ConfigFile) {
 	}
 }
 
-func postInstall(installation Installation) {
-	if len(installation.AfterHelp) != 0 {
-		fmt.Sprintf("\n\tHelp: %s\n", installation.AfterHelp)
+func getPostInstallHelp(message string) string {
+	if len(message) != 0 {
+		return fmt.Sprintf("\n\tHelp: %s\n", message)
 	}
+
+	return ""
 }
 
 func installSteps(steps []InstallStep) {
@@ -27,9 +29,9 @@ func installSteps(steps []InstallStep) {
 
 		importConfigFiles(step.ConfigFiles)
 
-		// for _, command := range step.Commands {
-		// 	execCommand(command)
-		// }
+		for _, command := range step.Commands {
+			execCommand(command)
+		}
 	}
 }
 
@@ -41,9 +43,24 @@ func installPrograms(programs []string) {
 	}
 }
 
-func Install(installation Installation) {
-	// installPrograms(installation.Programs)
+func install(installation Installation)  {
+	installPrograms(installation.Programs)
 	installSteps(installation.Steps)
-	postInstall(installation)
+}
+
+
+func InstallConfig(config Config, installCommand string) {
+	postInstallHelp := ""
+	installation := config[installCommand]
+
+	for _, dependency := range installation.Dependencies {
+		fmt.Printf("====> Installing dependency '%s'\n", dependency)
+		install(config[dependency])
+		postInstallHelp += getPostInstallHelp(config[dependency].AfterHelp)
+	}
+
+	fmt.Printf("====> Installing '%s'\n", installCommand)
+	install(installation)
+	fmt.Sprintf("%s%s", postInstallHelp, getPostInstallHelp(installation.AfterHelp))
 }
 
