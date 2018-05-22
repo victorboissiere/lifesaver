@@ -45,12 +45,6 @@ func DownloadFile(url string, filename string) error {
 		os.Exit(1)
 	}
 
-	out, err := os.Create(resolveTilde(filename))
-	if err != nil {
-		return err
-	}
-	defer out.Close()
-
 	err = ioutil.WriteFile(resolveTilde(filename), contents, 0644)
 	if err != nil {
 		return err

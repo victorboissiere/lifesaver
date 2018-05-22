@@ -10,7 +10,7 @@ func importConfigFiles(configFiles []ConfigFile) {
 
 	for _, configFile := range configFiles {
 		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", configFile.Src, configFile.Dst)
-		DownloadFile(getRepoFileURL(configFile.Dst), configFile.Dst)
+		DownloadFile(getRepoFileURL(configFile.Src), configFile.Dst)
 		setOwnership(configFile.Dst)
 	}
 }
