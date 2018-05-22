@@ -52,7 +52,7 @@ func getGID() string {
 }
 
 func setOwnership(filename string) {
-	err := os.Chown(filename, getEnvNumber(getUID()), getEnvNumber(getGID()))
+	err := os.Chown(resolveTilde(filename), getEnvNumber(getUID()), getEnvNumber(getGID()))
 	if err != nil {
 		log.Fatalf("Error setting permissions: %s\n", err)
 	}
