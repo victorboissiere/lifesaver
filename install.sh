@@ -14,6 +14,8 @@ else
     exit 1
 fi
 
+export SUDO_UID
+export SUDO_GID
 wget -O /tmp/lifesaver "https://raw.githubusercontent.com/victorboissiere/lifesaver/go/bin/$platform"
 chmod +x /tmp/lifesaver
 sudo /tmp/lifesaver $@
