@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"io"
 	"fmt"
+	"io/ioutil"
 )
 
 func getRepoFileURL(filename string) string {
@@ -38,6 +39,11 @@ func DownloadFile(url string, filename string) error {
 		return err
 	}
 	defer resp.Body.Close()
+	_, errBody := ioutil.ReadAll(resp.Body)
+	if errBody != nil {
+		fmt.Printf("%s", errBody)
+		os.Exit(1)
+	}
 
 	out, err := os.Create(resolveTilde(filename))
 	if err != nil {
