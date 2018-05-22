@@ -12,6 +12,7 @@ type Installation struct {
 	Programs     []string
 	Dependencies []string // optional
 	Steps []InstallStep
+	AfterHelp string `yaml:"afterHelp"`
 }
 type InstallStep struct {
 	Description string
