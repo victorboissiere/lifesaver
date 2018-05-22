@@ -33,6 +33,7 @@ func execCommand(command string) {
 }
 
 func DownloadFile(url string, filename string) error {
+	fmt.Println("Downloading file " + url + " to " + filename)
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
