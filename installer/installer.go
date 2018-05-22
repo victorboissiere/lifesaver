@@ -3,7 +3,6 @@ package installer
 import (
 	"fmt"
 	"strings"
-	"github.com/fatih/color"
 )
 
 func importConfigFiles(configFiles []ConfigFile) {
@@ -59,13 +58,13 @@ func InstallConfig(config Config, installCommand string) {
 	installation := config[installCommand]
 
 	for _, dependency := range installation.Dependencies {
-		color.Green("====> Installing dependency '%s'\n", dependency)
+		fmt.Printf("====> Installing dependency '%s'\n", dependency)
 		install(config[dependency])
 		postInstallHelp += getPostInstallHelp(config[dependency].AfterHelp)
 	}
 
 	fmt.Printf("====> Installing '%s'\n", installCommand)
 	install(installation)
-	color.Blue("%s%s", postInstallHelp, getPostInstallHelp(installation.AfterHelp))
+	fmt.Printf("%s%s", postInstallHelp, getPostInstallHelp(installation.AfterHelp))
 }
 
