@@ -2,9 +2,11 @@ language: go
 
 before_install:
   - go get gopkg.in/yaml.v2
-  - go build ./cmd/lifesaver
+  - go build
 
 jobs:
   include:
   - stage: Install commands
     script: sudo ./main minimal
+  - script: ls -la
+  - script: test -f ~/.vimrc
