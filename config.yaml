@@ -48,7 +48,7 @@ server:
       configFiles:
         - src: ./softwares/zsh/robbyrussell.zsh-theme
           dst: ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
-  after_help: Do not forget to source zsh "source ~/.zshrc"
+  afterHelp: Do not forget to source zsh "source ~/.zshrc"
 
 sshagent:
   description: Install ssh agent persistence
