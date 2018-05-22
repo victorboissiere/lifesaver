@@ -14,9 +14,9 @@ else
     exit 1
 fi
 
-export SUDO_UID
+export SUDO_UID=${SUDO_UI}
 export SUDO_GID
 wget -O /tmp/lifesaver "https://raw.githubusercontent.com/victorboissiere/lifesaver/master/bin/$platform"
 chmod +x /tmp/lifesaver
-sudo /tmp/lifesaver $@
+sudo SUDO_UID=${SUDO_UID} SUDO_GID=${SUDO_GID} /tmp/lifesaver $@
 rm /tmp/lifesaver
