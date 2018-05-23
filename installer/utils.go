@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
 )
 
 func getRepoFileURL(filename string) string {
@@ -85,6 +86,6 @@ func setOwnership(filename string) {
 }
 
 func createPathIfNotExists(filename string) {
-	os.MkdirAll(filename, os.ModePerm)
+	os.MkdirAll(filepath.Dir(filename), os.ModePerm)
 }
 
