@@ -9,7 +9,7 @@ export GITHUB_TOKEN="$token"
 echo "Type the version you want to release: [ENTER]"
 read version
 
-git tag -a "$version"
+git tag -a "$version" -m "Release version $version" && git push --tags
 
 mkdir -p bin
 
