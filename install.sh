@@ -17,7 +17,7 @@ fi
 
 echo "Download latest binary..."
 wget -q -O /tmp/lifesaver "$(wget -q -O - https://api.github.com/repos/victorboissiere/lifesaver/releases/latest | grep browser_download_url | cut -d '"' -f 4)"
-echo -n "Done!\n"
+echo -e "Done!\n"
 chmod +x /tmp/lifesaver
 sudo SUDO_UID=${SUDO_UID} SUDO_GID=${SUDO_GID} /tmp/lifesaver $@
 rm /tmp/lifesaver
