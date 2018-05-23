@@ -2,8 +2,8 @@ package main
 
 import (
 	"os"
-	"fmt"
 	"./installer"
+	"fmt"
 )
 
 func printUsage(config installer.Config) {
