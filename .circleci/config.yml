@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.10
-    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    working_directory: /go/src/github.com/victorboissiere/lifesaver
     steps:
       - checkout
       - run: go get gopkg.in/yaml.v2
