@@ -11,14 +11,15 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"syscall"
 )
 
 func getRepoFileURL(filename string) string {
-	return fmt.Sprintf("https://raw.githubusercontent.com/victorboissiere/lifesaver/go/%s", filename)
+	return fmt.Sprintf("%s/%s", BASE_CONFIG_ASSETS_URL, filename)
 }
 
 func resolveTilde(command string) string {
-	usr, err := user.LookupId(getUID())
+	usr, err := user.LookupId(strconv.Itoa(getUID()))
 	if err != nil {
 		log.Fatal( err )
 	}
@@ -56,36 +57,81 @@ func DownloadFile(url string, filename string) error {
 func getEnvNumber(env string) int {
 	envInt, err := strconv.Atoi(env)
 	if err != nil {
-		log.Fatalf("Error converting SUDO_GID: %s\n", err)
+		log.Fatalf("Error converting %s: %s\n", env, err)
 	}
 
 	return envInt
 }
 
-func getUID() string {
+func getUID() int {
 	if uid, ok := os.LookupEnv("SUDO_UID"); ok {
-		return uid
+		return getEnvNumber(uid)
 	}
 
-	return strconv.Itoa(os.Getuid())
+	return os.Getuid()
 }
 
-func getGID() string {
+func getGID() int {
 	if gid, ok := os.LookupEnv("SUDO_GID"); ok {
-		return gid
+		return getEnvNumber(gid)
 	}
 
-	return strconv.Itoa(os.Getgid())
+	return os.Getgid()
 }
 
 func setOwnership(filename string) {
-	err := os.Chown(filename, getEnvNumber(getUID()), getEnvNumber(getGID()))
+	err := os.Chown(filename, getUID(), getGID())
 	if err != nil {
 		log.Fatalf("Error setting permissions: %s\n", err)
 	}
 }
 
+
 func createPathIfNotExists(filename string) {
-	os.MkdirAll(filepath.Dir(filename), os.ModePerm)
+	err := mkdirAll(filepath.Dir(filename), 0744)
+	if err != nil {
+		log.Fatalf("Error creating path: %s\n", err)
+	}
+}
+
+// From original lib because need to chown as well as process usually run as sudo
+func mkdirAll(path string, perm os.FileMode) error {
+	dir, err := os.Stat(path)
+	if err == nil {
+		if dir.IsDir() {
+			return nil
+		}
+		return &os.PathError{"mkdir", path, syscall.ENOTDIR}
+	}
+
+	i := len(path)
+	for i > 0 && os.IsPathSeparator(path[i-1]) {
+		i--
+	}
+
+	j := i
+	for j > 0 && !os.IsPathSeparator(path[j-1]) {
+		j--
+	}
+
+	if j > 1 {
+		err = mkdirAll(path[0:j-1], perm)
+		if err != nil {
+			return err
+		}
+	}
+
+	err = os.Mkdir(path, perm)
+	if err != nil {
+		dir, err1 := os.Lstat(path)
+		if err1 == nil && dir.IsDir() {
+			return nil
+		}
+		return err
+	}
+	// Added function not in lib
+	setOwnership(path)
+
+	return nil
 }
 

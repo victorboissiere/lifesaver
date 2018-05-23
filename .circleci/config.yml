@@ -9,6 +9,8 @@ jobs:
       - run: go get gopkg.in/yaml.v2
       - run: go build lifesaver.go
       - run: sudo ./lifesaver full
-      - run: ls -la ~
       - run: test -f ~/.vimrc
+      - run: sudo sh -c 'test "$(stat -c %u .vimrc)" -eq "$SUDO_UID"'
+      - run: sudo sh -c 'test "$(stat -c %u .config)" -eq "$SUDO_UID"'
+      - run: sudo sh -c 'test "$(stat -c %u .zshrc)" -eq "$SUDO_UID"'
 

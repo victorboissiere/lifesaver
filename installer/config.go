@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+const BASE_CONFIG_ASSETS_URL = "https://raw.githubusercontent.com/victorboissiere/lifesaver/master"
+
 type Config map[string]Installation
 type Installation struct {
 	Description  string
