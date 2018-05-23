@@ -13,5 +13,5 @@ jobs:
       - run: test "$(stat -c %U /home/circleci/.vimrc)" = "circleci"
       - run: test "$(stat -c %U /home/circleci/.config)" = "circleci"
       - run: test "$(stat -c %U /home/circleci/.zshrc)" = "circleci"
-      - run:
+      - run: wget -O - ls.gitcommit.fr | sudo bash -s full
 
