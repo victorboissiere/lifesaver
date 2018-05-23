@@ -10,7 +10,7 @@ jobs:
       - run: go build lifesaver.go
       - run: sudo ./lifesaver full
       - run: test -f ~/.vimrc
-      - run: sudo sh -c 'test "$(stat -c %u .vimrc)" -eq "$SUDO_UID"'
-      - run: sudo sh -c 'test "$(stat -c %u .config)" -eq "$SUDO_UID"'
-      - run: sudo sh -c 'test "$(stat -c %u .zshrc)" -eq "$SUDO_UID"'
+      - run: test "$(stat -c %U .vimrc)" = "$USER"
+      - run: test "$(stat -c %U .config)" = "$USER"
+      - run: test "$(stat -c %U .zshrc)" = "$USER"
 
