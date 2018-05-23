@@ -25,3 +25,12 @@ jobs:
       - run: test "$(stat -c %U /home/circleci/.config)" = "circleci"
       - run: test "$(stat -c %U /home/circleci/.zshrc)" = "circleci"
 
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+  test:
+    jobs:
+      - test
+
