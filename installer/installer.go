@@ -13,7 +13,7 @@ func importConfigFiles(configFiles []ConfigFile) {
 		dstPath := resolveTilde(configFile.Dst)
 		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", srcPath, dstPath)
 		DownloadFile(srcPath, dstPath)
-		setOwnership(configFile.Dst)
+		setOwnership(dstPath)
 	}
 }
 
@@ -27,8 +27,9 @@ func getPostInstallHelp(message string) string {
 
 func installCommands(commands []string) {
 	for _, command := range commands {
-		fmt.Printf("[COMMAND] %s\n", command)
-		execCommand(command)
+		commandResolved := resolveTilde(command)
+		fmt.Printf("[COMMAND] %s\n", commandResolved)
+		execCommand(commandResolved)
 	}
 }
 
