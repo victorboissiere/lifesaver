@@ -10,7 +10,8 @@ jobs:
       - run: go build lifesaver.go
       - run: sudo ./lifesaver full
       - run: test -f ~/.vimrc
-      - run: test "$(stat -c %U /home/circleci/.vimrc)" = "$USER"
-      - run: test "$(stat -c %U /home/circleci/.config)" = "$USER"
-      - run: test "$(stat -c %U /home/circleci/.zshrc)" = "$USER"
+      - run: test "$(stat -c %U /home/circleci/.vimrc)" = "circleci"
+      - run: test "$(stat -c %U /home/circleci/.config)" = "circleci"
+      - run: test "$(stat -c %U /home/circleci/.zshrc)" = "circleci"
+      - run:
 
