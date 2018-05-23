@@ -32,8 +32,12 @@ shell:
       configFiles:
         - src: softwares/ranger/rc.conf
           dst: ~/.config/ranger/rc.conf
-        - src: softwares/zsh/custom
-          dst: ~/.oh-my-zsh
+        - src: softwares/zsh/custom/refresh-config.zsh
+          dst: ~/.oh-my-zsh/custom/refresh-config.zsh
+        - src: softwares/zsh/custom/vs.zsh
+          dst: ~/.oh-my-zsh/custom/vs.zsh
+        - src: softwares/zsh/custom/alias-docker.zsh
+          dst: ~/.oh-my-zsh/custom/alias-docker.zsh
       commands:
         - mkdir -p ~/.config/ranger
   afterHelp: To switch default shell to zsh please run "chsh -s $(which zsh)"
