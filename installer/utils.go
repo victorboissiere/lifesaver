@@ -44,7 +44,7 @@ func DownloadFile(url string, filename string) error {
 		os.Exit(1)
 	}
 
-	err = ioutil.WriteFile(resolveTilde(filename), contents, 0644)
+	err = ioutil.WriteFile(filename, contents, 0644)
 	if err != nil {
 		return err
 	}
@@ -78,7 +78,7 @@ func getGID() string {
 }
 
 func setOwnership(filename string) {
-	err := os.Chown(resolveTilde(filename), getEnvNumber(getUID()), getEnvNumber(getGID()))
+	err := os.Chown(filename, getEnvNumber(getUID()), getEnvNumber(getGID()))
 	if err != nil {
 		log.Fatalf("Error setting permissions: %s\n", err)
 	}

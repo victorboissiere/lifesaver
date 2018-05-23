@@ -9,8 +9,10 @@ func importConfigFiles(configFiles []ConfigFile) {
 	fmt.Println("[STEP][CONFIG_FILES]")
 
 	for _, configFile := range configFiles {
-		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", configFile.Src, configFile.Dst)
-		DownloadFile(getRepoFileURL(configFile.Src), configFile.Dst)
+		srcPath := getRepoFileURL(configFile.Src)
+		dstPath := resolveTilde(configFile.Dst)
+		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", srcPath, dstPath)
+		DownloadFile(srcPath, dstPath)
 		setOwnership(configFile.Dst)
 	}
 }
