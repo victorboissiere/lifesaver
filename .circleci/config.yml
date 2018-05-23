@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: go get gopkg.in/yaml.v2
       - run: go build lifesaver.go
-      - run: sudo ./lifesaver full
+      - run: sudo echo pass && ./lifesaver full
       - run: test -f ~/.vimrc
       - run: test "$(stat -c %U /home/circleci/.vimrc)" = "circleci"
       - run: test "$(stat -c %U /home/circleci/.oh-my-zsh)" = "circleci"
