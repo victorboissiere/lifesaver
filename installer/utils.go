@@ -15,7 +15,7 @@ func getRepoFileURL(filename string) string {
 }
 
 func execCommand(command string) {
-	cmd := exec.Command(os.Getenv("SHELL"), "-c", command)
+	cmd := exec.Command("sh", "-c", command)
 	if out, err := cmd.CombinedOutput(); err != nil {
 		log.Fatalf("Stdout: %sFailed with %s\n", out, err)
 	}
