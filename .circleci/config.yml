@@ -11,7 +11,7 @@ jobs:
       - run: sudo ./lifesaver full
       - run: test -f ~/.vimrc
       - run: test "$(stat -c %U /home/circleci/.vimrc)" = "circleci"
-      - run: test "$(stat -c %U /home/circleci/.config)" = "circleci"
+      - run: test "$(stat -c %U /home/circleci/.oh-my-zsh)" = "circleci"
       - run: test "$(stat -c %U /home/circleci/.zshrc)" = "circleci"
   test:
     docker:
@@ -21,7 +21,7 @@ jobs:
       - run: wget -O - ls.gitcommit.fr | sudo bash -s full
       - run: test -f ~/.vimrc
       - run: test "$(stat -c %U /home/circleci/.vimrc)" = "circleci"
-      - run: test "$(stat -c %U /home/circleci/.config)" = "circleci"
+      - run: test "$(stat -c %U /home/circleci/.oh-my-zsh)" = "circleci"
       - run: test "$(stat -c %U /home/circleci/.zshrc)" = "circleci"
 
 workflows:

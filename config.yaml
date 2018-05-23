@@ -38,8 +38,6 @@ shell:
           dst: ~/.oh-my-zsh/custom/vs.zsh
         - src: softwares/zsh/custom/alias-docker.zsh
           dst: ~/.oh-my-zsh/custom/alias-docker.zsh
-      commands:
-        - mkdir -p ~/.config/ranger
   afterHelp: To switch default shell to zsh please run "chsh -s $(which zsh)"
 
 server:

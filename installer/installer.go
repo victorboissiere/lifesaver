@@ -10,11 +10,9 @@ func importConfigFiles(configFiles []ConfigFile) {
 
 	for _, configFile := range configFiles {
 		srcPath := getRepoFileURL(configFile.Src)
-		dstPath := resolveTilde(configFile.Dst)
-		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", srcPath, dstPath)
-		createPathIfNotExists(dstPath)
-		DownloadFile(srcPath, dstPath)
-		setOwnership(dstPath)
+		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", srcPath, configFile.Dst)
+		createPathIfNotExists(configFile.Dst)
+		DownloadFile(srcPath, configFile.Dst)
 	}
 }
 
@@ -28,9 +26,8 @@ func getPostInstallHelp(message string) string {
 
 func installCommands(commands []string) {
 	for _, command := range commands {
-		commandResolved := resolveTilde(command)
-		fmt.Printf("[COMMAND] %s\n", commandResolved)
-		execCommand(commandResolved)
+		fmt.Printf("[COMMAND] %s\n", command)
+		execCommand(command)
 	}
 }
 
@@ -48,7 +45,7 @@ func installPrograms(programs []string) {
 	fmt.Println("[PROGRAMS]")
 	for _, program := range programs {
 		fmt.Printf("[PROGRAM] %s\n", strings.ToUpper(program))
-		execCommand("apt install -y " + program)
+		execCommand("sudo apt install -y " + program)
 	}
 }
 
