@@ -84,3 +84,7 @@ func setOwnership(filename string) {
 	}
 }
 
+func createPathIfNotExists(filename string) {
+	os.MkdirAll(filename, os.ModePerm)
+}
+

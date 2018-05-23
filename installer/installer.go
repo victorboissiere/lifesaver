@@ -12,6 +12,7 @@ func importConfigFiles(configFiles []ConfigFile) {
 		srcPath := getRepoFileURL(configFile.Src)
 		dstPath := resolveTilde(configFile.Dst)
 		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", srcPath, dstPath)
+		createPathIfNotExists(dstPath)
 		DownloadFile(srcPath, dstPath)
 		setOwnership(dstPath)
 	}
