@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.10
+    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    steps:
+      - checkout
+      - run: go get gopkg.in/yaml.v2
+      - run: go build lifesaver.go
+      - run: sudo ./lifesaver minimal && ls -la ~ && test -f ~/.vimrc
