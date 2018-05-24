@@ -15,6 +15,7 @@ else
 fi
 
 
+export TERM=xterm-256color
 echo "Please provide sudo pass for software install (simple sudo echo trigger):"
 sudo echo -e "Thanks! All set!\n"
 echo "Download latest binary..."
