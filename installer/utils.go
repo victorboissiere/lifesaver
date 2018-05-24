@@ -4,9 +4,7 @@ import (
 	"os/exec"
 	"log"
 	"os"
-	"net/http"
 	"fmt"
-	"io/ioutil"
 	"path/filepath"
 )
 
@@ -22,23 +20,7 @@ func execCommand(command string) {
 }
 
 func DownloadFile(url string, filename string) error {
-	resp, err := http.Get(url)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-	contents, errBody := ioutil.ReadAll(resp.Body)
-	if errBody != nil {
-		fmt.Printf("%s", errBody)
-		os.Exit(1)
-	}
-
-	err = ioutil.WriteFile(filename, contents, 0644)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	execCommand(fmt.Sprintf("wget -O %s $s", url, filename))
 }
 
 func createPathIfNotExists(filename string) {
