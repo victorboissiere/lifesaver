@@ -8,18 +8,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
-	"os/user"
-	"strings"
 )
-
-func resolveTilde(command string) string {
-	usr, err := user.Lookup(os.Getenv("USER"))
-	if err != nil {
-		log.Fatal( err )
-	}
-
-	return strings.Replace(command, "~", usr.HomeDir, -1)
-}
 
 func getRepoFileURL(filename string) string {
 	return fmt.Sprintf("%s/%s", BASE_CONFIG_ASSETS_URL, filename)
@@ -44,7 +33,7 @@ func DownloadFile(url string, filename string) error {
 		os.Exit(1)
 	}
 
-	err = ioutil.WriteFile(resolveTilde(filename), contents, 0644)
+	err = ioutil.WriteFile(filename, contents, 0644)
 	if err != nil {
 		return err
 	}
