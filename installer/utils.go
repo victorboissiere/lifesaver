@@ -13,7 +13,7 @@ import (
 )
 
 func resolveTilde(command string) string {
-	usr, err := user.LookupId(os.Getenv("UID"))
+	usr, err := user.Lookup(os.Getenv("USER"))
 	if err != nil {
 		log.Fatal( err )
 	}
