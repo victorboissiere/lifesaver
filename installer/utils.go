@@ -19,7 +19,7 @@ func execCommand(command string) {
 	}
 }
 
-func DownloadFile(url string, filename string) error {
+func DownloadFile(url string, filename string) {
 	execCommand(fmt.Sprintf("wget -O %s $s", url, filename))
 }
 
