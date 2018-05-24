@@ -13,7 +13,7 @@ import (
 )
 
 func resolveTilde(command string) string {
-	usr, err := user.Current()
+	usr, err := user.LookupId(os.Getenv("UID"))
 	if err != nil {
 		log.Fatal( err )
 	}
@@ -26,7 +26,7 @@ func getRepoFileURL(filename string) string {
 }
 
 func execCommand(command string) {
-	cmd := exec.Command("bash", "-c", command)
+	cmd := exec.Command("sh", "-c", command)
 	if out, err := cmd.CombinedOutput(); err != nil {
 		log.Fatalf("Stdout: %sFailed with %s\n", out, err)
 	}
