@@ -10,12 +10,12 @@ minimal:
         - src: softwares/vim/.vimrc
           dst: ~/.vimrc
         - src: softwares/zsh/.zshrc
-          dst: ~/.zshrc
+          dst: /tmp/lifesaver_zshrc
       commands:
         - curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         - yes '' | vim +silent +PlugInstall +qall
         - mkdir -p ~/.vim/swap && mkdir -p ~/.vim/undo
-        - grep "^alias" ~/.zshrc > ~/.zshenv
+        - grep "^alias" /tmp/lifesaver_zshrc > ~/.zshenv && rm /tmp/lifesaver_zshrc
 
 shell:
   description: ZSH full shell configuration with oh my zsh
@@ -28,16 +28,20 @@ shell:
     - description: Installing zsh custom configuration
       commands:
         - exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    - description: Apply custom ranger configuration
+    - description: Add zsh configuration
       configFiles:
-        - src: softwares/ranger/rc.conf
-          dst: ~/.config/ranger/rc.conf
+        - src: softwares/zsh/.zshrc
+          dst: ~/.zshrc
         - src: softwares/zsh/custom/refresh-config.zsh
           dst: ~/.oh-my-zsh/custom/refresh-config.zsh
         - src: softwares/zsh/custom/vs.zsh
           dst: ~/.oh-my-zsh/custom/vs.zsh
         - src: softwares/zsh/custom/alias-docker.zsh
           dst: ~/.oh-my-zsh/custom/alias-docker.zsh
+    - description: Apply custom ranger configuration
+      configFiles:
+        - src: softwares/ranger/rc.conf
+          dst: ~/.config/ranger/rc.conf
   afterHelp: To switch default shell to zsh please run "chsh -s $(which zsh)"
 
 server:

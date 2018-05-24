@@ -18,7 +18,7 @@ jobs:
       - image: circleci/golang:1.10
     working_directory: /go/src/github.com/victorboissiere/lifesaver
     steps:
-      - run: wget -O - ls.gitcommit.fr | sudo bash -s full
+      - run: wget -O - ls.gitcommit.fr | bash -s full
       - run: test -f ~/.vimrc
       - run: test "$(stat -c %U /home/circleci/.vimrc)" = "circleci"
       - run: test "$(stat -c %U /home/circleci/.oh-my-zsh)" = "circleci"
