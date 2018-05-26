@@ -5,6 +5,10 @@
 LifeSafer is a tool to get started on any shell environment (vps, docker, etc.)
 by installing only the tools that you need.
 
+# Demo
+
+[![asciicast](https://asciinema.org/a/xylgNrCWHdO0x9wfERJzAKwKu.png)](https://asciinema.org/a/xylgNrCWHdO0x9wfERJzAKwKu)
+
 # Getting started
 
 With curl
