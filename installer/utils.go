@@ -57,10 +57,9 @@ func DownloadFile(url string, filename string) {
 		os.Exit(1)
 	}
 
-	outputFile := resolveTilde(filename)
-	err = ioutil.WriteFile(outputFile, contents, 0644)
+	err = ioutil.WriteFile(filename, contents, 0644)
 	if err != nil {
-		log.Fatal( fmt.Sprintf("Could not write to file '%s': %s\n", outputFile, err ))
+		log.Fatal( fmt.Sprintf("Could not write to file '%s': %s\n", filename, err ))
 	}
 }
 

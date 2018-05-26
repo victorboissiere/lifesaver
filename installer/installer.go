@@ -12,9 +12,10 @@ func importConfigFiles(configFiles []ConfigFile) {
 
 	for _, configFile := range configFiles {
 		srcPath := getRepoFileURL(configFile.Src)
-		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", srcPath, configFile.Dst)
-		createPathIfNotExists(configFile.Dst)
-		DownloadFile(srcPath, configFile.Dst)
+		dstPath := resolveTilde(configFile.Dst)
+		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", srcPath, dstPath)
+		createPathIfNotExists(dstPath)
+		DownloadFile(srcPath, dstPath)
 	}
 }
 
