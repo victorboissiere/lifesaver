@@ -8,8 +8,6 @@ import (
 )
 
 func importConfigFiles(configFiles []ConfigFile) {
-	fmt.Println("[STEP][CONFIG_FILES]")
-
 	for _, configFile := range configFiles {
 		srcPath := getRepoFileURL(configFile.Src)
 		dstPath := resolveTilde(configFile.Dst)
@@ -29,13 +27,12 @@ func getPostInstallHelp(message string) string {
 
 func installCommands(commands []string) {
 	for _, command := range commands {
-		fmt.Printf("[COMMAND] %s\n", command)
+		fmt.Printf("[STEP][COMMAND] %s\n", command)
 		execCommand(command)
 	}
 }
 
 func installSteps(steps []InstallStep) {
-	fmt.Println("[STEPS]")
 	for _, step := range steps {
 		fmt.Printf("[STEP] %s\n", step.Description)
 
@@ -45,7 +42,6 @@ func installSteps(steps []InstallStep) {
 }
 
 func installPrograms(programs []string) {
-	fmt.Println("[PROGRAMS]")
 	for _, program := range programs {
 		fmt.Printf("[PROGRAM] %s\n", strings.ToUpper(program))
 
@@ -66,12 +62,12 @@ func InstallConfig(config Config, installCommand string) {
 	installation := config[installCommand]
 
 	for _, dependency := range installation.Dependencies {
-		fmt.Printf("====> Installing dependency '%s'\n", dependency)
+		fmt.Printf("\n====> Installing dependency '%s'\n\n", dependency)
 		install(config[dependency])
 		postInstallHelp += getPostInstallHelp(config[dependency].AfterHelp)
 	}
 
-	fmt.Printf("====> Installing '%s'\n", installCommand)
+	fmt.Printf("\n====> Installing '%s'\n\n", installCommand)
 	install(installation)
 	fmt.Printf("%s%s", postInstallHelp, getPostInstallHelp(installation.AfterHelp))
 }

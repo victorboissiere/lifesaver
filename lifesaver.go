@@ -29,5 +29,5 @@ func main() {
 	}
 
 	installer.InstallConfig(config, installCommand)
-	fmt.Println("\nDone! Thank you for using LifeSaver")
+	fmt.Println("\n\n\nDone! Thank you for using LifeSaver")
 }
