@@ -22,5 +22,5 @@ wget -q -O /tmp/lifesaver "$(wget -q -O - https://api.github.com/repos/victorboi
 echo -e "Done!\n"
 
 chmod +x /tmp/lifesaver
-/tmp/lifesaver $@
+/tmp/lifesaver $1
 rm /tmp/lifesaver

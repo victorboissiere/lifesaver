@@ -29,13 +29,15 @@ type ConfigFile struct {
 }
 
 func GetConfig() Config {
-	tmpConfigFile := "/tmp/lifesaver_config.yaml"
 	configFileURL := getRepoFileURL("config.yaml")
+
+	fmt.Printf("[CONFIG] Repo is %s\n", getRepoFileURL(""))
 	fmt.Printf("[CONFIG] Downloading config file %s\n", configFileURL)
+
+	tmpConfigFile := "/tmp/lifesaver_config.yaml"
 	DownloadFile(configFileURL, tmpConfigFile)
 
 	yamlFile, err := ioutil.ReadFile(tmpConfigFile)
-
 	if err != nil {
 		log.Fatalln(err)
 	}

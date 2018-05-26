@@ -13,7 +13,7 @@ func importConfigFiles(configFiles []ConfigFile) {
 	for _, configFile := range configFiles {
 		srcPath := getRepoFileURL(configFile.Src)
 		dstPath := resolveTilde(configFile.Dst)
-		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", srcPath, dstPath)
+		fmt.Printf("[STEP][CONFIG_FILE] %s => %s\n", configFile.Src, dstPath)
 		createPathIfNotExists(dstPath)
 		DownloadFile(srcPath, dstPath)
 	}
@@ -21,7 +21,7 @@ func importConfigFiles(configFiles []ConfigFile) {
 
 func getPostInstallHelp(message string) string {
 	if len(message) != 0 {
-		return fmt.Sprintf("\n\tHelp: %s\n", message)
+		return fmt.Sprintf("\n\tHelp: %s", message)
 	}
 
 	return ""
