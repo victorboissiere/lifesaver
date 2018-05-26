@@ -24,7 +24,6 @@ shell:
     - minimal
   programs:
     - zsh
-    - ranger
   steps:
     - description: Installing oh-my-zsh
       configFiles:
