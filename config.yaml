@@ -2,6 +2,7 @@ minimal:
   description: Install basic shell configuration
   programs:
     - vim
+    - git
     - curl
     - zsh # For vim alias auto completion
   steps:
@@ -96,10 +97,4 @@ ansible:
       commands:
         - pip3 install -i https://pypi.python.org/simple/ --upgrade pip
         - pip3 install ansible
-
-full:
-  description: Install full shell configuration
-  dependencies:
-    - minimal
-    - shell
 
