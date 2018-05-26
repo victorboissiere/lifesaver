@@ -26,8 +26,11 @@ shell:
     - ranger
   steps:
     - description: Installing zsh custom configuration
+      configFiles:
+        - src: softwares/zsh/oh-my-zsh.sh
+          dst: /tmp/oh-my-zsh-installer.sh
       commands:
-        - exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        - sh /tmp/oh-my-zsh-installer.sh && rm /tmp/oh-my-zsh-installer.sh
     - description: Add zsh configuration
       configFiles:
         - src: softwares/zsh/.zshrc
