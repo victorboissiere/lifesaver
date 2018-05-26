@@ -2,9 +2,9 @@ package installer
 
 import (
 	"fmt"
-	"strings"
-	"os/exec"
 	"log"
+	"os/exec"
+	"strings"
 )
 
 func importConfigFiles(configFiles []ConfigFile) {
@@ -47,6 +47,7 @@ func installPrograms(programs []string) {
 	fmt.Println("[PROGRAMS]")
 	for _, program := range programs {
 		fmt.Printf("[PROGRAM] %s\n", strings.ToUpper(program))
+
 		cmd := exec.Command("sudo", "apt", "install", "-y", program)
 		if out, err := cmd.CombinedOutput(); err != nil {
 			log.Fatalf("Stdout: %sFailed with %s\n", out, err)
@@ -54,7 +55,7 @@ func installPrograms(programs []string) {
 	}
 }
 
-func install(installation Installation)  {
+func install(installation Installation) {
 	installPrograms(installation.Programs)
 	installSteps(installation.Steps)
 }
@@ -73,4 +74,3 @@ func InstallConfig(config Config, installCommand string) {
 	install(installation)
 	fmt.Printf("%s%s", postInstallHelp, getPostInstallHelp(installation.AfterHelp))
 }
-

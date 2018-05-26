@@ -1,21 +1,22 @@
 package installer
 
 import (
+	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
-	"gopkg.in/yaml.v2"
 	"os"
+	"fmt"
 )
 
-const BASE_CONFIG_ASSETS_URL = "https://raw.githubusercontent.com/victorboissiere/lifesaver/master"
+const BaseConfigAssetsUrl = "https://raw.githubusercontent.com/victorboissiere/lifesaver/master"
 
 type Config map[string]Installation
 type Installation struct {
 	Description  string
 	Programs     []string
 	Dependencies []string // optional
-	Steps []InstallStep
-	AfterHelp string `yaml:"afterHelp"`
+	Steps        []InstallStep
+	AfterHelp    string `yaml:"afterHelp"`
 }
 type InstallStep struct {
 	Description string
@@ -29,8 +30,12 @@ type ConfigFile struct {
 
 func GetConfig() Config {
 	tmpConfigFile := "/tmp/lifesaver_config.yaml"
-	DownloadFile(getRepoFileURL("config.yaml"), tmpConfigFile)
+	configFileURL := getRepoFileURL("config.yaml")
+	fmt.Printf("[CONFIG] Downloading config file %s\n", configFileURL)
+	DownloadFile(configFileURL, tmpConfigFile)
+
 	yamlFile, err := ioutil.ReadFile(tmpConfigFile)
+
 	if err != nil {
 		log.Fatalln(err)
 	}

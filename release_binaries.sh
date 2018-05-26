@@ -11,14 +11,16 @@ read version
 echo "Type the description of your release: [ENTER]"
 read description
 
-git tag -a "$version" -m "Release version $version" && git push --tags
-
 mkdir -p bin
 
 for plateform in "linux"
 do
+    echo "Building for $linux"
     GOOS=linux go build -o "bin/$plateform" -ldflags "-s -w"
+    echo "done"
 done
+
+git tag -a "$version" -m "Release version $version" && git push --tags
 
 # go get github.com/aktau/github-release
 github-release release \

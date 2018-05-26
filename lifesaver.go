@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
 	"./installer"
 	"fmt"
+	"os"
 )
 
 func printUsage(config installer.Config) {
@@ -15,7 +15,7 @@ func printUsage(config installer.Config) {
 	os.Exit(1)
 }
 
-func main()  {
+func main() {
 	config := installer.GetConfig()
 
 	if len(os.Args) != 2 {

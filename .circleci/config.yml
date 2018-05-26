@@ -14,3 +14,12 @@ jobs:
       - run: test "$(stat -c %U /home/circleci/.oh-my-zsh)" = "circleci"
       - run: test "$(stat -c %U /home/circleci/.zshrc)" = "circleci"
 
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+  test:
+    jobs:
+      - test
+
