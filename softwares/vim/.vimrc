@@ -8,6 +8,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'plasticboy/vim-markdown'
 Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 "-- MISC --"
@@ -120,6 +121,7 @@ nmap <Leader>q :ccl<cr>
 
 " Toggle left tree
 nmap <Leader>/ :NERDTreeToggle<cr>
+nmap <Leader>? :NERDTreeFind<cr>
 
 "Close vinegar
 nmap <Leader>k :bd<cr>
@@ -142,9 +144,6 @@ nmap <Leader>mt :Toch<cr>
 " Toggle set paste / notpaste
 nmap <Leader>p :set paste<cr>
 nmap <Leader>P :set nopaste<cr>
-
-" Open TODO.md
-nmap <Leader>et :tabe ~/TODO.md<cr>
 
 " Save & quit actions
 nmap <Leader>w :w<cr>
@@ -233,6 +232,9 @@ let g:ctrlp_cmd = ':NERDTreeClose\|CtrlP'
 " Prevent NerdTree from overriding - vinegar shortcut
 let NERDTreeHijackNetrw = 0
 let NERDTreeShowHidden = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 let NERDTreeIgnore = ['\.swp$', '\~$', '.git$[[dir]]']
 
 "/
