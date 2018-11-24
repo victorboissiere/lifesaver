@@ -3,13 +3,12 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-
-# Disable composer xdebug warning for performance issue
-export COMPOSER_DISABLE_XDEBUG_WARN=false
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git zsh-syntax-highlighting yarn docker docker-compose kubectl)
+plugins=(git zsh-syntax-highlighting yarn docker docker-compose kubectl helm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -22,12 +21,19 @@ export EDITOR="vim"
 alias python='python3'
 alias pip='pip3'
 alias v='vim'
-alias cpass='lpass show -Gpc'
-alias vzsh='vim ~/.zshrc'
-alias szsh='source ~/.zshrc'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+#-- K8S --#
+##################
+
+alias h="helm"
+alias hu="helm upgrade"
+alias hi="helm install"
+
+alias kn="kubectl -n"
+alias kc="kubectl config use-context"
 
 #-- NAVIGATION --#
 ##################
@@ -47,10 +53,6 @@ alias ad='ansible-doc'
 alias ap='ansible-playbook'
 alias an='ansible'
 
-# Vagrant
-alias vg='vagrant'
-alias vggs='vagrant global-status'
-
 # Terraform
 alias tf='terraform'
 alias tfp='terraform plan'
@@ -64,13 +66,6 @@ listsizes() { du -h -d 1 "${1:=./}" | grep M | sort -n -r | head }
 checkhaproxy() { haproxy -c -V -f ${1:=/etc/haproxy/haproxy.cfg} }
 alias checklogrotate='sudo logrotate -d'
 alias checkdnsmasq='dnsmasq --test'
-
-#-- LARAVEL --#
-###############
-
-# Php artisan (Laravel)
-alias pa="php artisan"
-
 
 #-- GIT --#
 ###########
@@ -106,55 +101,10 @@ alias i3config='vim ~/.i3/config'
 # Source ZSH config file
 alias szrc='source ~/.zshrc'
 
-#-- NAVIGATION --#
-##################
-
-# No need for cd
-alias ~='cd ~'
-
-#-- UTILS --#
-#############
-
-# Sudo shortcut
-alias s='sudo'
-
-# Become root
-alias root='sudo -i'
-
-# Google-chrome
-alias chrome='google-chrome'
-
-# Number of commits
-alias nbc='git log --oneline | wc -l'
-
-# Color managment
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-
-#-- COMPOSER --#
-################
-
-alias c='composer'
-
 #-- NODEJS --#
 ##############
 
 alias y='yarn'
-
-#-- FUNCTIONS --#
-#################
-
-function man()
-{
-  OUTPUT="`tldr $1 2>&1`"
-  if [ $? -eq 0 ]; then
-    echo $OUTPUT
-  else
-    /usr/bin/man $1
-  fi
-}
 
 # Help to be able to use alias in vim
 function zshalias()
@@ -172,4 +122,3 @@ function notifyme()
   $@;
   terminal-notifier -title 'Done!' -message "$cmd" -activate 'com.apple.Terminal' -sound Ping
 }
-
